@@ -18,6 +18,16 @@
 		E180C95617D210F1001C2742 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E180C95517D210F1001C2742 /* Default-568h@2x.png */; };
 		E180C95917D210F1001C2742 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E180C95717D210F1001C2742 /* MainStoryboard.storyboard */; };
 		E180C95C17D210F1001C2742 /* SBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E180C95B17D210F1001C2742 /* SBViewController.m */; };
+		E180C96617D213BD001C2742 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E180C96517D213BD001C2742 /* CFNetwork.framework */; };
+		E180C96817D213CB001C2742 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E180C96717D213CB001C2742 /* SystemConfiguration.framework */; };
+		E180C96A17D213D4001C2742 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E180C96917D213D4001C2742 /* MobileCoreServices.framework */; };
+		E180C96C17D213DD001C2742 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E180C96B17D213DD001C2742 /* CoreData.framework */; };
+		E180C96E17D213E7001C2742 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E180C96D17D213E7001C2742 /* Security.framework */; };
+		E180C97017D213F2001C2742 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E180C96F17D213F2001C2742 /* libz.dylib */; };
+		E180C99617D21550001C2742 /* worklight.plist in Resources */ = {isa = PBXBuildFile; fileRef = E180C99517D21550001C2742 /* worklight.plist */; };
+		E180C9AB17D21B19001C2742 /* sqlcipher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E180C9AA17D21B19001C2742 /* sqlcipher.framework */; };
+		E180C9AD17D21B87001C2742 /* libWorklightStaticLibProjectNative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E180C9AC17D21B87001C2742 /* libWorklightStaticLibProjectNative.a */; };
+		E180C9BB17D21F0B001C2742 /* SuperBuy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E180C9B917D21F0B001C2742 /* SuperBuy.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +47,16 @@
 		E180C95817D210F1001C2742 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		E180C95A17D210F1001C2742 /* SBViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBViewController.h; sourceTree = "<group>"; };
 		E180C95B17D210F1001C2742 /* SBViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBViewController.m; sourceTree = "<group>"; };
+		E180C96517D213BD001C2742 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		E180C96717D213CB001C2742 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		E180C96917D213D4001C2742 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		E180C96B17D213DD001C2742 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		E180C96D17D213E7001C2742 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		E180C96F17D213F2001C2742 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		E180C99517D21550001C2742 /* worklight.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = worklight.plist; sourceTree = "<group>"; };
+		E180C9AA17D21B19001C2742 /* sqlcipher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = sqlcipher.framework; path = "Super Buy/WorklightAPI/Frameworks/sqlcipher.framework"; sourceTree = "<group>"; };
+		E180C9AC17D21B87001C2742 /* libWorklightStaticLibProjectNative.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libWorklightStaticLibProjectNative.a; path = "Super Buy/WorklightAPI/libWorklightStaticLibProjectNative.a"; sourceTree = "<group>"; };
+		E180C9BA17D21F0B001C2742 /* SuperBuy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SuperBuy.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +64,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E180C9AD17D21B87001C2742 /* libWorklightStaticLibProjectNative.a in Frameworks */,
+				E180C9AB17D21B19001C2742 /* sqlcipher.framework in Frameworks */,
+				E180C97017D213F2001C2742 /* libz.dylib in Frameworks */,
+				E180C96E17D213E7001C2742 /* Security.framework in Frameworks */,
+				E180C96C17D213DD001C2742 /* CoreData.framework in Frameworks */,
+				E180C96A17D213D4001C2742 /* MobileCoreServices.framework in Frameworks */,
+				E180C96817D213CB001C2742 /* SystemConfiguration.framework in Frameworks */,
+				E180C96617D213BD001C2742 /* CFNetwork.framework in Frameworks */,
 				E180C94017D210F1001C2742 /* UIKit.framework in Frameworks */,
 				E180C94217D210F1001C2742 /* Foundation.framework in Frameworks */,
 				E180C94417D210F1001C2742 /* CoreGraphics.framework in Frameworks */,
@@ -76,6 +104,14 @@
 				E180C93F17D210F1001C2742 /* UIKit.framework */,
 				E180C94117D210F1001C2742 /* Foundation.framework */,
 				E180C94317D210F1001C2742 /* CoreGraphics.framework */,
+				E180C96517D213BD001C2742 /* CFNetwork.framework */,
+				E180C96717D213CB001C2742 /* SystemConfiguration.framework */,
+				E180C96917D213D4001C2742 /* MobileCoreServices.framework */,
+				E180C96B17D213DD001C2742 /* CoreData.framework */,
+				E180C96D17D213E7001C2742 /* Security.framework */,
+				E180C96F17D213F2001C2742 /* libz.dylib */,
+				E180C9AA17D21B19001C2742 /* sqlcipher.framework */,
+				E180C9AC17D21B87001C2742 /* libWorklightStaticLibProjectNative.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -101,6 +137,7 @@
 				E180C95117D210F1001C2742 /* Default.png */,
 				E180C95317D210F1001C2742 /* Default@2x.png */,
 				E180C95517D210F1001C2742 /* Default-568h@2x.png */,
+				E180C99517D21550001C2742 /* worklight.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -127,6 +164,7 @@
 		E180C96417D21119001C2742 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E180C9B917D21F0B001C2742 /* SuperBuy.xcdatamodeld */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -188,6 +226,7 @@
 				E180C95417D210F1001C2742 /* Default@2x.png in Resources */,
 				E180C95617D210F1001C2742 /* Default-568h@2x.png in Resources */,
 				E180C95917D210F1001C2742 /* MainStoryboard.storyboard in Resources */,
+				E180C99617D21550001C2742 /* worklight.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,6 +240,7 @@
 				E180C94C17D210F1001C2742 /* main.m in Sources */,
 				E180C95017D210F1001C2742 /* SBAppDelegate.m in Sources */,
 				E180C95C17D210F1001C2742 /* SBViewController.m in Sources */,
+				E180C9BB17D21F0B001C2742 /* SuperBuy.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,9 +325,18 @@
 		E180C96017D210F1001C2742 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Super Buy/WorklightAPI/Frameworks\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Super Buy/Super Buy-Prefix.pch";
 				INFOPLIST_FILE = "Super Buy/Super Buy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Super Buy/WorklightAPI\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -296,9 +345,18 @@
 		E180C96117D210F1001C2742 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Super Buy/WorklightAPI/Frameworks\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Super Buy/Super Buy-Prefix.pch";
 				INFOPLIST_FILE = "Super Buy/Super Buy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Super Buy/WorklightAPI\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -325,6 +383,19 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E180C9B917D21F0B001C2742 /* SuperBuy.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E180C9BA17D21F0B001C2742 /* SuperBuy.xcdatamodel */,
+			);
+			currentVersion = E180C9BA17D21F0B001C2742 /* SuperBuy.xcdatamodel */;
+			path = SuperBuy.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E180C93417D210F1001C2742 /* Project object */;
 }
