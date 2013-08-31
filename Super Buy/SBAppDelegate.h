@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Robert Witt. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 @interface SBAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

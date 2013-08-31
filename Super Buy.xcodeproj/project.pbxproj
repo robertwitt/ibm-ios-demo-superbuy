@@ -83,11 +83,9 @@
 		E180C94517D210F1001C2742 /* Super Buy */ = {
 			isa = PBXGroup;
 			children = (
-				E180C94E17D210F1001C2742 /* SBAppDelegate.h */,
-				E180C94F17D210F1001C2742 /* SBAppDelegate.m */,
-				E180C95717D210F1001C2742 /* MainStoryboard.storyboard */,
-				E180C95A17D210F1001C2742 /* SBViewController.h */,
-				E180C95B17D210F1001C2742 /* SBViewController.m */,
+				E180C96417D21119001C2742 /* Model */,
+				E180C96317D21112001C2742 /* View */,
+				E180C96217D21109001C2742 /* Controller */,
 				E180C94617D210F1001C2742 /* Supporting Files */,
 			);
 			path = "Super Buy";
@@ -105,6 +103,32 @@
 				E180C95517D210F1001C2742 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E180C96217D21109001C2742 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E180C94E17D210F1001C2742 /* SBAppDelegate.h */,
+				E180C94F17D210F1001C2742 /* SBAppDelegate.m */,
+				E180C95A17D210F1001C2742 /* SBViewController.h */,
+				E180C95B17D210F1001C2742 /* SBViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		E180C96317D21112001C2742 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E180C95717D210F1001C2742 /* MainStoryboard.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		E180C96417D21119001C2742 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Robert Witt. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 #import "SBAppDelegate.h"
 
 int main(int argc, char *argv[])
