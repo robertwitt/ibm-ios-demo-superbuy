@@ -28,6 +28,12 @@
 		E180C9AB17D21B19001C2742 /* sqlcipher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E180C9AA17D21B19001C2742 /* sqlcipher.framework */; };
 		E180C9AD17D21B87001C2742 /* libWorklightStaticLibProjectNative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E180C9AC17D21B87001C2742 /* libWorklightStaticLibProjectNative.a */; };
 		E180C9BB17D21F0B001C2742 /* SuperBuy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E180C9B917D21F0B001C2742 /* SuperBuy.xcdatamodeld */; };
+		E180C9BE17D2314B001C2742 /* SBModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E180C9BD17D2314B001C2742 /* SBModelObject.m */; };
+		E180C9C117D23CDE001C2742 /* SBMshTier.m in Sources */ = {isa = PBXBuildFile; fileRef = E180C9C017D23CDE001C2742 /* SBMshTier.m */; };
+		E180C9C417D23D0D001C2742 /* SBMshPointAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = E180C9C317D23D0D001C2742 /* SBMshPointAccount.m */; };
+		E180C9C717D23D20001C2742 /* SBMembership.m in Sources */ = {isa = PBXBuildFile; fileRef = E180C9C617D23D1F001C2742 /* SBMembership.m */; };
+		E180C9CA17D24860001C2742 /* SBWebAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = E180C9C917D24860001C2742 /* SBWebAPI.m */; };
+		E180C9CD17D249DE001C2742 /* SBMessageArray.m in Sources */ = {isa = PBXBuildFile; fileRef = E180C9CC17D249DE001C2742 /* SBMessageArray.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +63,18 @@
 		E180C9AA17D21B19001C2742 /* sqlcipher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = sqlcipher.framework; path = "Super Buy/WorklightAPI/Frameworks/sqlcipher.framework"; sourceTree = "<group>"; };
 		E180C9AC17D21B87001C2742 /* libWorklightStaticLibProjectNative.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libWorklightStaticLibProjectNative.a; path = "Super Buy/WorklightAPI/libWorklightStaticLibProjectNative.a"; sourceTree = "<group>"; };
 		E180C9BA17D21F0B001C2742 /* SuperBuy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SuperBuy.xcdatamodel; sourceTree = "<group>"; };
+		E180C9BC17D2314B001C2742 /* SBModelObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBModelObject.h; sourceTree = "<group>"; };
+		E180C9BD17D2314B001C2742 /* SBModelObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBModelObject.m; sourceTree = "<group>"; };
+		E180C9BF17D23CDE001C2742 /* SBMshTier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMshTier.h; sourceTree = "<group>"; };
+		E180C9C017D23CDE001C2742 /* SBMshTier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMshTier.m; sourceTree = "<group>"; };
+		E180C9C217D23D0D001C2742 /* SBMshPointAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMshPointAccount.h; sourceTree = "<group>"; };
+		E180C9C317D23D0D001C2742 /* SBMshPointAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMshPointAccount.m; sourceTree = "<group>"; };
+		E180C9C517D23D1F001C2742 /* SBMembership.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMembership.h; sourceTree = "<group>"; };
+		E180C9C617D23D1F001C2742 /* SBMembership.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMembership.m; sourceTree = "<group>"; };
+		E180C9C817D24860001C2742 /* SBWebAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBWebAPI.h; sourceTree = "<group>"; };
+		E180C9C917D24860001C2742 /* SBWebAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBWebAPI.m; sourceTree = "<group>"; };
+		E180C9CB17D249DE001C2742 /* SBMessageArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMessageArray.h; sourceTree = "<group>"; };
+		E180C9CC17D249DE001C2742 /* SBMessageArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMessageArray.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +183,18 @@
 			isa = PBXGroup;
 			children = (
 				E180C9B917D21F0B001C2742 /* SuperBuy.xcdatamodeld */,
+				E180C9BC17D2314B001C2742 /* SBModelObject.h */,
+				E180C9BD17D2314B001C2742 /* SBModelObject.m */,
+				E180C9C517D23D1F001C2742 /* SBMembership.h */,
+				E180C9C617D23D1F001C2742 /* SBMembership.m */,
+				E180C9BF17D23CDE001C2742 /* SBMshTier.h */,
+				E180C9C017D23CDE001C2742 /* SBMshTier.m */,
+				E180C9C217D23D0D001C2742 /* SBMshPointAccount.h */,
+				E180C9C317D23D0D001C2742 /* SBMshPointAccount.m */,
+				E180C9CB17D249DE001C2742 /* SBMessageArray.h */,
+				E180C9CC17D249DE001C2742 /* SBMessageArray.m */,
+				E180C9C817D24860001C2742 /* SBWebAPI.h */,
+				E180C9C917D24860001C2742 /* SBWebAPI.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -241,6 +271,12 @@
 				E180C95017D210F1001C2742 /* SBAppDelegate.m in Sources */,
 				E180C95C17D210F1001C2742 /* SBViewController.m in Sources */,
 				E180C9BB17D21F0B001C2742 /* SuperBuy.xcdatamodeld in Sources */,
+				E180C9BE17D2314B001C2742 /* SBModelObject.m in Sources */,
+				E180C9C117D23CDE001C2742 /* SBMshTier.m in Sources */,
+				E180C9C417D23D0D001C2742 /* SBMshPointAccount.m in Sources */,
+				E180C9C717D23D20001C2742 /* SBMembership.m in Sources */,
+				E180C9CA17D24860001C2742 /* SBWebAPI.m in Sources */,
+				E180C9CD17D249DE001C2742 /* SBMessageArray.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
