@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Robert Witt. All rights reserved.
 //
 
-@interface SBModelObject : NSObject <NSCoding>
+@interface SBModelObject : NSObject
 
 - (id)initWithJsonData:(NSDictionary *)jsonData;
 - (id)initWithJsonData:(NSDictionary *)jsonData header:(SBModelObject *)header;

@@ -11,20 +11,9 @@
 
 @implementation SBMembershipCredentials
 
-- (id)initWithCoder:(NSCoder *)aDecoder
+- (BOOL)isEqual:(id)object
 {
-    self = [self init];
-    
-    self.memberID = [aDecoder decodeObjectForKey:@"memberID"];
-    self.membershipID = [aDecoder decodeObjectForKey:@"membershipID"];
-    
-    return self;
-}
-
-- (void)encodeWithCoder:(NSCoder *)aCoder
-{
-    [aCoder encodeObject:self.memberID forKey:@"memberID"];
-    [aCoder encodeObject:self.membershipID forKey:@"membershipID"];
+    return [self.membershipID isEqualToString:[object membershipID]] && [self.memberID isEqualToString:[object memberID]];
 }
 
 @end

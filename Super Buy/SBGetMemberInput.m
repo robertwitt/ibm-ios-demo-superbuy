@@ -1,14 +1,14 @@
 //
-//  SBValidateMembershipInput.m
+//  SBGetMemberInput.m
 //  Super Buy
 //
 //  Created by Robert Witt on 01.09.13.
 //  Copyright (c) 2013 Robert Witt. All rights reserved.
 //
 
-#import "SBValidateMembershipInput.h"
+#import "SBGetMemberInput.h"
 
 
-@implementation SBValidateMembershipInput
+@implementation SBGetMemberInput
 
 @end

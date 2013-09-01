@@ -10,6 +10,8 @@
 #import "SBValidateMembershipOutput.h"
 #import "SBGetMembershipInput.h"
 #import "SBGetMembershipOutput.h"
+#import "SBGetMemberInput.h"
+#import "SBGetMemberOutput.h"
 
 
 @protocol SBWebAPIDelegate;
@@ -21,6 +23,7 @@
 - (void)connectToBackend;
 - (void)validateMembershipWithInput:(SBValidateMembershipInput *)input;
 - (void)getMembershipWithInput:(SBGetMembershipInput *)input;
+- (void)getMemberWithInput:(SBGetMemberInput *)input;
 
 @end
 
@@ -28,7 +31,6 @@
 @protocol SBWebAPIDelegate <NSObject>
 
 @optional
-
 - (void)webAPIdidConnectToBackend:(SBWebAPI *)webAPI;
 - (void)webAPI:(SBWebAPI *)webAPI didFailConnectingToBackendWithError:(NSError *)error;
 
@@ -37,5 +39,8 @@
 
 - (void)webAPI:(SBWebAPI *)webAPI didGetMembershipWithOutput:(SBGetMembershipOutput *)output;
 - (void)webAPI:(SBWebAPI *)webAPI didFailGettingMembershipWithInput:(SBGetMembershipInput *)input error:(NSError *)error;
+
+- (void)webAPI:(SBWebAPI *)webAPI didGetMemberWithOutput:(SBGetMemberOutput *)output;
+- (void)webAPI:(SBWebAPI *)webAPI didFailGettingMemberWithInput:(SBGetMemberInput *)input error:(NSError *)error;
 
 @end

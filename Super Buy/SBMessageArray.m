@@ -8,6 +8,7 @@
 
 #import "SBMessageArray.h"
 
+
 @implementation SBMessageArray
 
 @end

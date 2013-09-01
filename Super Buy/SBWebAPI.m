@@ -15,6 +15,7 @@
 static NSString *SBAdapter = @"SOAPCRMMobileLoyalty";
 static NSString *SBProcedureValidateMembership = @"validateMembership";
 static NSString *SBProcedureGetMembership = @"getMembership";
+static NSString *SBProcedureGetMember = @"getMember";
 
 
 @interface SBWebAPI () <WLDelegate>
@@ -25,6 +26,8 @@ static NSString *SBProcedureGetMembership = @"getMembership";
 
 @end
 
+
+#pragma mark -
 
 @implementation SBWebAPI
 
@@ -56,6 +59,12 @@ BOOL connected = NO;
            withParameters:@[input.membershipID]];
 }
 
+- (void)getMemberWithInput:(SBGetMemberInput *)input
+{
+    [self invokeProcedure:SBProcedureGetMember
+           withParameters:@[input.memberID]];
+}
+
 - (void)invokeProcedure:(NSString *)procedure withParameters:(NSArray *)parameters
 {
     self.procedure = procedure;
@@ -66,7 +75,7 @@ BOOL connected = NO;
 }
 
 
-#pragma Worklight Client Delegate
+#pragma mark Worklight Client Delegate
 
 - (void)onSuccess:(WLResponse *)response
 {
@@ -90,9 +99,12 @@ BOOL connected = NO;
         }
     }
     
-    else if ([procedure isEqualToString:@""])
+    else if ([procedure isEqualToString:SBProcedureGetMember])
     {
-        // TODO Implement further web services
+        if ([self.delegate respondsToSelector:@selector(webAPI:didGetMemberWithOutput:)]) {
+            SBGetMemberOutput *output = [[SBGetMemberOutput alloc] initWithJsonData:jsonData];
+            [self.delegate webAPI:self didGetMemberWithOutput:output];
+        }
     }
     
     else

@@ -24,18 +24,6 @@
     return self;
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    // Needs to be overwritten by subclasses
-    self = [super init];
-    return self;
-}
-
-- (void)encodeWithCoder:(NSCoder *)aCoder
-{
-    // Needs to be overwritten by subclasses
-}
-
 - (NSDate *)dateFromString:(NSString *)string
 {
     // Parse string into date

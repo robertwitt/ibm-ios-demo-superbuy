@@ -16,6 +16,12 @@
 		E13834A517D3436500CA4457 /* SBRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E13834A417D3436500CA4457 /* SBRegisterViewController.m */; };
 		E13834A817D345D300CA4457 /* SBMembershipCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = E13834A717D345D300CA4457 /* SBMembershipCredentials.m */; };
 		E13834AB17D34AEB00CA4457 /* UIViewController+Addon.m in Sources */ = {isa = PBXBuildFile; fileRef = E13834AA17D34AEB00CA4457 /* UIViewController+Addon.m */; };
+		E13834AE17D35B7100CA4457 /* SBPersistenceCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = E13834AD17D35B7100CA4457 /* SBPersistenceCoordinator.m */; };
+		E13834B117D3613300CA4457 /* SBMember.m in Sources */ = {isa = PBXBuildFile; fileRef = E13834B017D3613300CA4457 /* SBMember.m */; };
+		E13834B417D3614400CA4457 /* SBMembAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = E13834B317D3614400CA4457 /* SBMembAddress.m */; };
+		E13834B717D3650600CA4457 /* SBGetMemberInput.m in Sources */ = {isa = PBXBuildFile; fileRef = E13834B617D3650600CA4457 /* SBGetMemberInput.m */; };
+		E13834BA17D3655A00CA4457 /* SBGetMemberOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = E13834B917D3655A00CA4457 /* SBGetMemberOutput.m */; };
+		E13834BD17D3675D00CA4457 /* SBMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E13834BC17D3675D00CA4457 /* SBMemberViewController.m */; };
 		E180C94017D210F1001C2742 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E180C93F17D210F1001C2742 /* UIKit.framework */; };
 		E180C94217D210F1001C2742 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E180C94117D210F1001C2742 /* Foundation.framework */; };
 		E180C94417D210F1001C2742 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E180C94317D210F1001C2742 /* CoreGraphics.framework */; };
@@ -26,7 +32,6 @@
 		E180C95417D210F1001C2742 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E180C95317D210F1001C2742 /* Default@2x.png */; };
 		E180C95617D210F1001C2742 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E180C95517D210F1001C2742 /* Default-568h@2x.png */; };
 		E180C95917D210F1001C2742 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E180C95717D210F1001C2742 /* MainStoryboard.storyboard */; };
-		E180C95C17D210F1001C2742 /* SBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E180C95B17D210F1001C2742 /* SBViewController.m */; };
 		E180C96617D213BD001C2742 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E180C96517D213BD001C2742 /* CFNetwork.framework */; };
 		E180C96817D213CB001C2742 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E180C96717D213CB001C2742 /* SystemConfiguration.framework */; };
 		E180C96A17D213D4001C2742 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E180C96917D213D4001C2742 /* MobileCoreServices.framework */; };
@@ -64,6 +69,18 @@
 		E13834A717D345D300CA4457 /* SBMembershipCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMembershipCredentials.m; sourceTree = "<group>"; };
 		E13834A917D34AEB00CA4457 /* UIViewController+Addon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Addon.h"; sourceTree = "<group>"; };
 		E13834AA17D34AEB00CA4457 /* UIViewController+Addon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Addon.m"; sourceTree = "<group>"; };
+		E13834AC17D35B7100CA4457 /* SBPersistenceCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPersistenceCoordinator.h; sourceTree = "<group>"; };
+		E13834AD17D35B7100CA4457 /* SBPersistenceCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPersistenceCoordinator.m; sourceTree = "<group>"; };
+		E13834AF17D3613300CA4457 /* SBMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMember.h; sourceTree = "<group>"; };
+		E13834B017D3613300CA4457 /* SBMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMember.m; sourceTree = "<group>"; };
+		E13834B217D3614300CA4457 /* SBMembAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMembAddress.h; sourceTree = "<group>"; };
+		E13834B317D3614400CA4457 /* SBMembAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMembAddress.m; sourceTree = "<group>"; };
+		E13834B517D3650600CA4457 /* SBGetMemberInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBGetMemberInput.h; sourceTree = "<group>"; };
+		E13834B617D3650600CA4457 /* SBGetMemberInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBGetMemberInput.m; sourceTree = "<group>"; };
+		E13834B817D3655A00CA4457 /* SBGetMemberOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBGetMemberOutput.h; sourceTree = "<group>"; };
+		E13834B917D3655A00CA4457 /* SBGetMemberOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBGetMemberOutput.m; sourceTree = "<group>"; };
+		E13834BB17D3675D00CA4457 /* SBMemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMemberViewController.h; sourceTree = "<group>"; };
+		E13834BC17D3675D00CA4457 /* SBMemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMemberViewController.m; sourceTree = "<group>"; };
 		E180C93C17D210F1001C2742 /* Super Buy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Super Buy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E180C93F17D210F1001C2742 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E180C94117D210F1001C2742 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -78,8 +95,6 @@
 		E180C95317D210F1001C2742 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		E180C95517D210F1001C2742 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		E180C95817D210F1001C2742 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		E180C95A17D210F1001C2742 /* SBViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBViewController.h; sourceTree = "<group>"; };
-		E180C95B17D210F1001C2742 /* SBViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBViewController.m; sourceTree = "<group>"; };
 		E180C96517D213BD001C2742 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		E180C96717D213CB001C2742 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E180C96917D213D4001C2742 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -139,6 +154,10 @@
 				E138349117D3182F00CA4457 /* SBGetMembershipInput.m */,
 				E138349317D3187000CA4457 /* SBGetMembershipOutput.h */,
 				E138349417D3187000CA4457 /* SBGetMembershipOutput.m */,
+				E13834B517D3650600CA4457 /* SBGetMemberInput.h */,
+				E13834B617D3650600CA4457 /* SBGetMemberInput.m */,
+				E13834B817D3655A00CA4457 /* SBGetMemberOutput.h */,
+				E13834B917D3655A00CA4457 /* SBGetMemberOutput.m */,
 			);
 			name = "Web Layer";
 			sourceTree = "<group>";
@@ -218,8 +237,8 @@
 				E13834A117D3424700CA4457 /* SBLoginViewController.m */,
 				E13834A317D3436500CA4457 /* SBRegisterViewController.h */,
 				E13834A417D3436500CA4457 /* SBRegisterViewController.m */,
-				E180C95A17D210F1001C2742 /* SBViewController.h */,
-				E180C95B17D210F1001C2742 /* SBViewController.m */,
+				E13834BB17D3675D00CA4457 /* SBMemberViewController.h */,
+				E13834BC17D3675D00CA4457 /* SBMemberViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -246,8 +265,14 @@
 				E180C9C017D23CDE001C2742 /* SBMshTier.m */,
 				E180C9C217D23D0D001C2742 /* SBMshPointAccount.h */,
 				E180C9C317D23D0D001C2742 /* SBMshPointAccount.m */,
+				E13834AF17D3613300CA4457 /* SBMember.h */,
+				E13834B017D3613300CA4457 /* SBMember.m */,
+				E13834B217D3614300CA4457 /* SBMembAddress.h */,
+				E13834B317D3614400CA4457 /* SBMembAddress.m */,
 				E180C9CB17D249DE001C2742 /* SBMessageArray.h */,
 				E180C9CC17D249DE001C2742 /* SBMessageArray.m */,
+				E13834AC17D35B7100CA4457 /* SBPersistenceCoordinator.h */,
+				E13834AD17D35B7100CA4457 /* SBPersistenceCoordinator.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -322,7 +347,6 @@
 			files = (
 				E180C94C17D210F1001C2742 /* main.m in Sources */,
 				E180C95017D210F1001C2742 /* SBAppDelegate.m in Sources */,
-				E180C95C17D210F1001C2742 /* SBViewController.m in Sources */,
 				E180C9BB17D21F0B001C2742 /* SuperBuy.xcdatamodeld in Sources */,
 				E180C9BE17D2314B001C2742 /* SBModelObject.m in Sources */,
 				E180C9C117D23CDE001C2742 /* SBMshTier.m in Sources */,
@@ -339,6 +363,12 @@
 				E13834A517D3436500CA4457 /* SBRegisterViewController.m in Sources */,
 				E13834A817D345D300CA4457 /* SBMembershipCredentials.m in Sources */,
 				E13834AB17D34AEB00CA4457 /* UIViewController+Addon.m in Sources */,
+				E13834AE17D35B7100CA4457 /* SBPersistenceCoordinator.m in Sources */,
+				E13834B117D3613300CA4457 /* SBMember.m in Sources */,
+				E13834B417D3614400CA4457 /* SBMembAddress.m in Sources */,
+				E13834B717D3650600CA4457 /* SBGetMemberInput.m in Sources */,
+				E13834BA17D3655A00CA4457 /* SBGetMemberOutput.m in Sources */,
+				E13834BD17D3675D00CA4457 /* SBMemberViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

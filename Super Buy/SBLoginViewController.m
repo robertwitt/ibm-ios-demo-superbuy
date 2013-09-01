@@ -25,7 +25,12 @@
 @end
 
 
+#pragma mark -
+
 @implementation SBLoginViewController
+
+
+#pragma mark Properties
 
 - (SBWebAPI *)webAPI
 {
@@ -36,11 +41,8 @@
     return _webAPI;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
-}
+
+#pragma mark Managing the View
 
 - (void)didReceiveMemoryWarning
 {

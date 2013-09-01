@@ -8,7 +8,9 @@
 
 #import "SBMembershipViewController.h"
 #import "SBLoginViewController.h"
+#import "SBMemberViewController.h"
 #import "SBWebAPI.h"
+#import "SBPersistenceCoordinator.h"
 
 
 const NSInteger SBSectionGeneral = 0;
@@ -21,7 +23,9 @@ const NSInteger SBSectionPointAccounts = 2;
 static NSString *SBCellDefault = @"DefaultCell";
 static NSString *SBCellMember = @"MemberCell";
 static NSString *SBCellPointAccount = @"PointAccountCell";
+
 static NSString *SBSegueLogin = @"LoginSegue";
+static NSString *SBSegueMember = @"MemberSegue";
 
 
 @interface SBMembershipViewController () <SBLoginViewControllerDelegate, SBWebAPIDelegate>
@@ -34,11 +38,19 @@ static NSString *SBSegueLogin = @"LoginSegue";
 - (UITableViewCell *)tierCellForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (UITableViewCell *)pointAccountCellForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (void)prepareForLoginSegue:(UIStoryboardSegue *)segue sender:(id)sender;
+- (void)prepareForMemberSegue:(UIStoryboardSegue *)segue sender:(id)sender;
 
 @end
 
 
+#pragma mark -
+
 @implementation SBMembershipViewController
+
+@synthesize credentials = _credentials;
+
+
+#pragma mark Properties
 
 - (SBWebAPI *)webAPI
 {
@@ -49,15 +61,36 @@ static NSString *SBSegueLogin = @"LoginSegue";
     return _webAPI;
 }
 
-- (void)viewDidLoad
+- (SBMembershipCredentials *)credentials
 {
-    [super viewDidLoad];
+    if (!_credentials) {
+        _credentials = [[SBPersistenceCoordinator sharedInstance] readMembershipCredentials];
+    }
+    return _credentials;
+}
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+- (void)setCredentials:(SBMembershipCredentials *)credentials
+{
+    if (![credentials isEqual:_credentials]) {
+        _credentials = credentials;
+        [[SBPersistenceCoordinator sharedInstance] writeMembershipCredentials:credentials];
+        self.membership = nil;
+    }
+}
+
+
+#pragma mark Managing the View
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if (self.credentials && !self.membership) {
+        [self.webAPI connectToBackend];
+    }
+    else if (!self.credentials) {
+        [self performSegueWithIdentifier:SBSegueLogin sender:self];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -70,6 +103,8 @@ static NSString *SBSegueLogin = @"LoginSegue";
 {
     if ([segue.identifier isEqualToString:SBSegueLogin]) {
         [self prepareForLoginSegue:segue sender:sender];
+    } else if ([segue.identifier isEqualToString:SBSegueMember]) {
+        [self prepareForMemberSegue:segue sender:sender];
     }
 }
 
@@ -79,12 +114,23 @@ static NSString *SBSegueLogin = @"LoginSegue";
     controller.delegate = self;
 }
 
+- (void)prepareForMemberSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    SBMemberViewController *controller = (SBMemberViewController *)segue.destinationViewController;
+    controller.memberID = self.membership.memberID;
+}
+
 
 #pragma mark Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    NSInteger section = 0;
+    if (self.membership) {
+        section = 3;
+    }
+    
+    return section;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

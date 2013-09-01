@@ -32,24 +32,6 @@
     return self;
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super initWithCoder:aDecoder];
-    
-    // TODO Decode properties
-    
-    
-    return self;
-}
-
-- (void)encodeWithCoder:(NSCoder *)aCoder
-{
-    [super encodeWithCoder:aCoder];
-    
-    // TODO Encode properties
-    
-}
-
 - (NSString *)description
 {
     return [NSString stringWithFormat:@"Tier '%@' (membership %@)", self.tierLevelText, self.membership.ID];

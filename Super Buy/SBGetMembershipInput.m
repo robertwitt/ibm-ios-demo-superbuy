@@ -8,6 +8,7 @@
 
 #import "SBGetMembershipInput.h"
 
+
 @implementation SBGetMembershipInput
 
 @end

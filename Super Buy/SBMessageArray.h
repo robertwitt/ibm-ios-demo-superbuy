@@ -8,6 +8,7 @@
 
 #import "SBModelObject.h"
 
+
 @interface SBMessageArray : SBModelObject
 
 @end
