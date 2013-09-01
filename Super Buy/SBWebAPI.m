@@ -19,7 +19,6 @@ static NSString *SBProcedureGetMembership = @"getMembership";
 
 @interface SBWebAPI () <WLDelegate>
 
-@property (nonatomic) BOOL connected;
 @property (strong, nonatomic) NSString *procedure;
 
 - (void)invokeProcedure:(NSString *)procedure withParameters:(NSArray *)parameters;
@@ -29,11 +28,13 @@ static NSString *SBProcedureGetMembership = @"getMembership";
 
 @implementation SBWebAPI
 
+BOOL connected = NO;
+
 #pragma mark Invoking the Worklight Server
 
 - (void)connectToBackend
 {
-    if (!self.connected) {
+    if (!connected) {
         [[WLClient sharedInstance] wlConnectWithDelegate:self];
     } else {
         // If already connected, inform delegate immediately
@@ -97,7 +98,7 @@ static NSString *SBProcedureGetMembership = @"getMembership";
     else
     {
         // Finally this must be the connect attempt.
-        self.connected = YES;
+        connected = YES;
         
         if ([self.delegate respondsToSelector:@selector(webAPIdidConnectToBackend:)]) {
             [self.delegate webAPIdidConnectToBackend:self];

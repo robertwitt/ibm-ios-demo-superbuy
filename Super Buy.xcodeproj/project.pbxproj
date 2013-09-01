@@ -11,6 +11,11 @@
 		E138349517D3187000CA4457 /* SBGetMembershipOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = E138349417D3187000CA4457 /* SBGetMembershipOutput.m */; };
 		E138349917D332CF00CA4457 /* SBValidateMembershipInput.m in Sources */ = {isa = PBXBuildFile; fileRef = E138349817D332CF00CA4457 /* SBValidateMembershipInput.m */; };
 		E138349C17D3331A00CA4457 /* SBValidateMembershipOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = E138349B17D3331A00CA4457 /* SBValidateMembershipOutput.m */; };
+		E138349F17D340EC00CA4457 /* SBMembershipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E138349E17D340EC00CA4457 /* SBMembershipViewController.m */; };
+		E13834A217D3424700CA4457 /* SBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E13834A117D3424700CA4457 /* SBLoginViewController.m */; };
+		E13834A517D3436500CA4457 /* SBRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E13834A417D3436500CA4457 /* SBRegisterViewController.m */; };
+		E13834A817D345D300CA4457 /* SBMembershipCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = E13834A717D345D300CA4457 /* SBMembershipCredentials.m */; };
+		E13834AB17D34AEB00CA4457 /* UIViewController+Addon.m in Sources */ = {isa = PBXBuildFile; fileRef = E13834AA17D34AEB00CA4457 /* UIViewController+Addon.m */; };
 		E180C94017D210F1001C2742 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E180C93F17D210F1001C2742 /* UIKit.framework */; };
 		E180C94217D210F1001C2742 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E180C94117D210F1001C2742 /* Foundation.framework */; };
 		E180C94417D210F1001C2742 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E180C94317D210F1001C2742 /* CoreGraphics.framework */; };
@@ -49,6 +54,16 @@
 		E138349817D332CF00CA4457 /* SBValidateMembershipInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBValidateMembershipInput.m; sourceTree = "<group>"; };
 		E138349A17D3331A00CA4457 /* SBValidateMembershipOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBValidateMembershipOutput.h; sourceTree = "<group>"; };
 		E138349B17D3331A00CA4457 /* SBValidateMembershipOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBValidateMembershipOutput.m; sourceTree = "<group>"; };
+		E138349D17D340EC00CA4457 /* SBMembershipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMembershipViewController.h; sourceTree = "<group>"; };
+		E138349E17D340EC00CA4457 /* SBMembershipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMembershipViewController.m; sourceTree = "<group>"; };
+		E13834A017D3424700CA4457 /* SBLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBLoginViewController.h; sourceTree = "<group>"; };
+		E13834A117D3424700CA4457 /* SBLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBLoginViewController.m; sourceTree = "<group>"; };
+		E13834A317D3436500CA4457 /* SBRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBRegisterViewController.h; sourceTree = "<group>"; };
+		E13834A417D3436500CA4457 /* SBRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBRegisterViewController.m; sourceTree = "<group>"; };
+		E13834A617D345D200CA4457 /* SBMembershipCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMembershipCredentials.h; sourceTree = "<group>"; };
+		E13834A717D345D300CA4457 /* SBMembershipCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMembershipCredentials.m; sourceTree = "<group>"; };
+		E13834A917D34AEB00CA4457 /* UIViewController+Addon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Addon.h"; sourceTree = "<group>"; };
+		E13834AA17D34AEB00CA4457 /* UIViewController+Addon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Addon.m"; sourceTree = "<group>"; };
 		E180C93C17D210F1001C2742 /* Super Buy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Super Buy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E180C93F17D210F1001C2742 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E180C94117D210F1001C2742 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -195,6 +210,14 @@
 			children = (
 				E180C94E17D210F1001C2742 /* SBAppDelegate.h */,
 				E180C94F17D210F1001C2742 /* SBAppDelegate.m */,
+				E13834A917D34AEB00CA4457 /* UIViewController+Addon.h */,
+				E13834AA17D34AEB00CA4457 /* UIViewController+Addon.m */,
+				E138349D17D340EC00CA4457 /* SBMembershipViewController.h */,
+				E138349E17D340EC00CA4457 /* SBMembershipViewController.m */,
+				E13834A017D3424700CA4457 /* SBLoginViewController.h */,
+				E13834A117D3424700CA4457 /* SBLoginViewController.m */,
+				E13834A317D3436500CA4457 /* SBRegisterViewController.h */,
+				E13834A417D3436500CA4457 /* SBRegisterViewController.m */,
 				E180C95A17D210F1001C2742 /* SBViewController.h */,
 				E180C95B17D210F1001C2742 /* SBViewController.m */,
 			);
@@ -215,6 +238,8 @@
 				E180C9B917D21F0B001C2742 /* SuperBuy.xcdatamodeld */,
 				E180C9BC17D2314B001C2742 /* SBModelObject.h */,
 				E180C9BD17D2314B001C2742 /* SBModelObject.m */,
+				E13834A617D345D200CA4457 /* SBMembershipCredentials.h */,
+				E13834A717D345D300CA4457 /* SBMembershipCredentials.m */,
 				E180C9C517D23D1F001C2742 /* SBMembership.h */,
 				E180C9C617D23D1F001C2742 /* SBMembership.m */,
 				E180C9BF17D23CDE001C2742 /* SBMshTier.h */,
@@ -309,6 +334,11 @@
 				E138349517D3187000CA4457 /* SBGetMembershipOutput.m in Sources */,
 				E138349917D332CF00CA4457 /* SBValidateMembershipInput.m in Sources */,
 				E138349C17D3331A00CA4457 /* SBValidateMembershipOutput.m in Sources */,
+				E138349F17D340EC00CA4457 /* SBMembershipViewController.m in Sources */,
+				E13834A217D3424700CA4457 /* SBLoginViewController.m in Sources */,
+				E13834A517D3436500CA4457 /* SBRegisterViewController.m in Sources */,
+				E13834A817D345D300CA4457 /* SBMembershipCredentials.m in Sources */,
+				E13834AB17D34AEB00CA4457 /* UIViewController+Addon.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
