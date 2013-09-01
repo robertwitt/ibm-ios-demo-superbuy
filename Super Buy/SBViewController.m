@@ -10,6 +10,7 @@
 #import "WorklightAPI/include/WLClient.h"
 #import "WorklightAPI/include/WLDelegate.h"
 #import "WorklightAPI/include/WLProcedureInvocationData.h"
+#import "SBWebAPI.h"
 
 
 @interface MyInvocationListener : NSObject <WLDelegate>
@@ -31,7 +32,9 @@
 @end
 
 
-@interface SBViewController () <WLDelegate>
+@interface SBViewController () <WLDelegate, SBWebAPIDelegate>
+
+@property (strong, nonatomic) SBWebAPI *webAPI;
 
 @end
 
@@ -43,7 +46,11 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    [[WLClient sharedInstance] wlConnectWithDelegate:self];
+//    [[WLClient sharedInstance] wlConnectWithDelegate:self];
+    
+    self.webAPI = [[SBWebAPI alloc] init];
+    self.webAPI.delegate = self;
+    [self.webAPI connectToBackend];
 }
 
 - (void)didReceiveMemoryWarning
@@ -67,6 +74,18 @@
 - (void)onFailure:(WLFailResponse *)response
 {
     NSLog(@"%@", response.responseText);
+}
+
+- (void)webAPIdidConnectToBackend:(SBWebAPI *)webAPI
+{
+    SBGetMembershipInput *input = [[SBGetMembershipInput alloc] init];
+    input.membershipID = @"1";
+    [self.webAPI getMembershipWithInput:input];
+}
+
+- (void)webAPI:(SBWebAPI *)webAPI didGetMembershipWithOutput:(SBGetMembershipOutput *)output
+{
+    
 }
 
 @end

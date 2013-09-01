@@ -38,8 +38,10 @@
 
 - (NSDate *)dateFromString:(NSString *)string
 {
-    // TODO Parse string into date
-    NSDate *date;
+    // Parse string into date
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"yyyy-MM-dd";
+    NSDate *date = [dateFormatter dateFromString:string];
     
     return date;
 }

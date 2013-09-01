@@ -7,10 +7,13 @@
 //
 
 #import "SBModelObject.h"
-#import "SBMshPointAccount.h"
 
+
+@class SBMembership;
 
 @interface SBMshPointAccount : SBModelObject
+
+@property (strong, nonatomic) SBMembership *membership;
 
 @property (strong, nonatomic, readonly) NSString *ID;
 @property (strong, nonatomic, readonly) NSString *pointType;

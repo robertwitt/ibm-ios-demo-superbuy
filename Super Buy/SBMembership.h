@@ -7,6 +7,8 @@
 //
 
 #import "SBModelObject.h"
+#import "SBMshTier.h"
+#import "SBMshPointAccount.h"
 
 
 @interface SBMembership : SBModelObject

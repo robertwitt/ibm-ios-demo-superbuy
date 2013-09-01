@@ -8,25 +8,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Super Buy/SBViewController.m"
-         timestampString = "399648249.003506"
+         timestampString = "399714374.552476"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "59"
-         endingLineNumber = "59"
-         landmarkName = "-onSuccess:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Super Buy/SBViewController.m"
-         timestampString = "399648249.003506"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "69"
-         endingLineNumber = "69"
-         landmarkName = "-onFailure:"
+         startingLineNumber = "88"
+         endingLineNumber = "88"
+         landmarkName = "-webAPI:didGetMembershipWithOutput:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

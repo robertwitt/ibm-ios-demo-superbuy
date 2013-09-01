@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E138349217D3182F00CA4457 /* SBGetMembershipInput.m in Sources */ = {isa = PBXBuildFile; fileRef = E138349117D3182F00CA4457 /* SBGetMembershipInput.m */; };
+		E138349517D3187000CA4457 /* SBGetMembershipOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = E138349417D3187000CA4457 /* SBGetMembershipOutput.m */; };
+		E138349917D332CF00CA4457 /* SBValidateMembershipInput.m in Sources */ = {isa = PBXBuildFile; fileRef = E138349817D332CF00CA4457 /* SBValidateMembershipInput.m */; };
+		E138349C17D3331A00CA4457 /* SBValidateMembershipOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = E138349B17D3331A00CA4457 /* SBValidateMembershipOutput.m */; };
 		E180C94017D210F1001C2742 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E180C93F17D210F1001C2742 /* UIKit.framework */; };
 		E180C94217D210F1001C2742 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E180C94117D210F1001C2742 /* Foundation.framework */; };
 		E180C94417D210F1001C2742 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E180C94317D210F1001C2742 /* CoreGraphics.framework */; };
@@ -37,6 +41,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E138349017D3182F00CA4457 /* SBGetMembershipInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBGetMembershipInput.h; sourceTree = "<group>"; };
+		E138349117D3182F00CA4457 /* SBGetMembershipInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBGetMembershipInput.m; sourceTree = "<group>"; };
+		E138349317D3187000CA4457 /* SBGetMembershipOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBGetMembershipOutput.h; sourceTree = "<group>"; };
+		E138349417D3187000CA4457 /* SBGetMembershipOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBGetMembershipOutput.m; sourceTree = "<group>"; };
+		E138349717D332CF00CA4457 /* SBValidateMembershipInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBValidateMembershipInput.h; sourceTree = "<group>"; };
+		E138349817D332CF00CA4457 /* SBValidateMembershipInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBValidateMembershipInput.m; sourceTree = "<group>"; };
+		E138349A17D3331A00CA4457 /* SBValidateMembershipOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBValidateMembershipOutput.h; sourceTree = "<group>"; };
+		E138349B17D3331A00CA4457 /* SBValidateMembershipOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBValidateMembershipOutput.m; sourceTree = "<group>"; };
 		E180C93C17D210F1001C2742 /* Super Buy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Super Buy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E180C93F17D210F1001C2742 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E180C94117D210F1001C2742 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -99,6 +111,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E138349617D3187A00CA4457 /* Web Layer */ = {
+			isa = PBXGroup;
+			children = (
+				E180C9C817D24860001C2742 /* SBWebAPI.h */,
+				E180C9C917D24860001C2742 /* SBWebAPI.m */,
+				E138349717D332CF00CA4457 /* SBValidateMembershipInput.h */,
+				E138349817D332CF00CA4457 /* SBValidateMembershipInput.m */,
+				E138349A17D3331A00CA4457 /* SBValidateMembershipOutput.h */,
+				E138349B17D3331A00CA4457 /* SBValidateMembershipOutput.m */,
+				E138349017D3182F00CA4457 /* SBGetMembershipInput.h */,
+				E138349117D3182F00CA4457 /* SBGetMembershipInput.m */,
+				E138349317D3187000CA4457 /* SBGetMembershipOutput.h */,
+				E138349417D3187000CA4457 /* SBGetMembershipOutput.m */,
+			);
+			name = "Web Layer";
+			sourceTree = "<group>";
+		};
 		E180C93317D210F1001C2742 = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				E180C96417D21119001C2742 /* Model */,
+				E138349617D3187A00CA4457 /* Web Layer */,
 				E180C96317D21112001C2742 /* View */,
 				E180C96217D21109001C2742 /* Controller */,
 				E180C94617D210F1001C2742 /* Supporting Files */,
@@ -193,8 +223,6 @@
 				E180C9C317D23D0D001C2742 /* SBMshPointAccount.m */,
 				E180C9CB17D249DE001C2742 /* SBMessageArray.h */,
 				E180C9CC17D249DE001C2742 /* SBMessageArray.m */,
-				E180C9C817D24860001C2742 /* SBWebAPI.h */,
-				E180C9C917D24860001C2742 /* SBWebAPI.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -277,6 +305,10 @@
 				E180C9C717D23D20001C2742 /* SBMembership.m in Sources */,
 				E180C9CA17D24860001C2742 /* SBWebAPI.m in Sources */,
 				E180C9CD17D249DE001C2742 /* SBMessageArray.m in Sources */,
+				E138349217D3182F00CA4457 /* SBGetMembershipInput.m in Sources */,
+				E138349517D3187000CA4457 /* SBGetMembershipOutput.m in Sources */,
+				E138349917D332CF00CA4457 /* SBValidateMembershipInput.m in Sources */,
+				E138349C17D3331A00CA4457 /* SBValidateMembershipOutput.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +449,7 @@
 				E180C96117D210F1001C2742 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

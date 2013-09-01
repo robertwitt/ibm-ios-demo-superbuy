@@ -6,17 +6,10 @@
 //  Copyright (c) 2013 Robert Witt. All rights reserved.
 //
 
-#import "SBMembership.h"
-#import "SBMessageArray.h"
-
-
-@interface SBGetMembershipInput : NSObject
-@property (nonatomic, strong) NSString *membershipID;
-@end
-
-@interface SBGetMembershipOutput : NSObject
-@property (nonatomic, strong) SBMembership *membership;
-@end
+#import "SBValidateMembershipInput.h"
+#import "SBValidateMembershipOutput.h"
+#import "SBGetMembershipInput.h"
+#import "SBGetMembershipOutput.h"
 
 
 @protocol SBWebAPIDelegate;
@@ -25,9 +18,9 @@
 
 @property (nonatomic) id<SBWebAPIDelegate> delegate;
 
-- (void)startGettingMembershipWithInput:(SBGetMembershipInput *)input;
-
-+ (SBWebAPI *)sharedInstance;
+- (void)connectToBackend;
+- (void)validateMembershipWithInput:(SBValidateMembershipInput *)input;
+- (void)getMembershipWithInput:(SBGetMembershipInput *)input;
 
 @end
 
@@ -36,7 +29,13 @@
 
 @optional
 
-- (void)didGetMembershipWithOutput:(SBGetMembershipOutput *)output messages:(SBMessageArray *)messages;
-- (void)didFailGettingMembershipWithInput:(SBGetMembershipInput *)input error:(NSError *)error;
+- (void)webAPIdidConnectToBackend:(SBWebAPI *)webAPI;
+- (void)webAPI:(SBWebAPI *)webAPI didFailConnectingToBackendWithError:(NSError *)error;
+
+- (void)webAPI:(SBWebAPI *)webAPI didValidateMembershipWithOutput:(SBValidateMembershipOutput *)output;
+- (void)webAPI:(SBWebAPI *)webAPI didFailValidatingMembershipWithInput:(SBValidateMembershipInput *)input error:(NSError *)error;
+
+- (void)webAPI:(SBWebAPI *)webAPI didGetMembershipWithOutput:(SBGetMembershipOutput *)output;
+- (void)webAPI:(SBWebAPI *)webAPI didFailGettingMembershipWithInput:(SBGetMembershipInput *)input error:(NSError *)error;
 
 @end

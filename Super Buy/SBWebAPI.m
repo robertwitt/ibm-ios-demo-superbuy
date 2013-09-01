@@ -12,17 +12,9 @@
 #import "WorklightAPI/include/WLProcedureInvocationData.h"
 
 
-SBWebAPI *singleton;
-NSString *SBAdapter = @"SOAPCRMMobileLoyalty";
-NSString *SBProcedureGetMembership = @"getMembership";
-
-
-@implementation SBGetMembershipInput
-@end
-
-
-@implementation SBGetMembershipOutput
-@end
+static NSString *SBAdapter = @"SOAPCRMMobileLoyalty";
+static NSString *SBProcedureValidateMembership = @"validateMembership";
+static NSString *SBProcedureGetMembership = @"getMembership";
 
 
 @interface SBWebAPI () <WLDelegate>
@@ -30,7 +22,6 @@ NSString *SBProcedureGetMembership = @"getMembership";
 @property (nonatomic) BOOL connected;
 @property (strong, nonatomic) NSString *procedure;
 
-- (void)connect;
 - (void)invokeProcedure:(NSString *)procedure withParameters:(NSArray *)parameters;
 
 @end
@@ -38,7 +29,27 @@ NSString *SBProcedureGetMembership = @"getMembership";
 
 @implementation SBWebAPI
 
-- (void)startGettingMembershipWithInput:(SBGetMembershipInput *)input
+#pragma mark Invoking the Worklight Server
+
+- (void)connectToBackend
+{
+    if (!self.connected) {
+        [[WLClient sharedInstance] wlConnectWithDelegate:self];
+    } else {
+        // If already connected, inform delegate immediately
+        if ([self.delegate respondsToSelector:@selector(webAPIdidConnectToBackend:)]) {
+            [self.delegate webAPIdidConnectToBackend:self];
+        }
+    }
+}
+
+- (void)validateMembershipWithInput:(SBValidateMembershipInput *)input
+{
+    [self invokeProcedure:SBProcedureValidateMembership
+           withParameters:@[input.memberID, input.membershipID]];
+}
+
+- (void)getMembershipWithInput:(SBGetMembershipInput *)input
 {
     [self invokeProcedure:SBProcedureGetMembership
            withParameters:@[input.membershipID]];
@@ -46,8 +57,6 @@ NSString *SBProcedureGetMembership = @"getMembership";
 
 - (void)invokeProcedure:(NSString *)procedure withParameters:(NSArray *)parameters
 {
-    [self connect];
-    
     self.procedure = procedure;
     WLProcedureInvocationData *invocationData = [[WLProcedureInvocationData alloc] initWithAdapterName:SBAdapter procedureName:procedure];
     invocationData.parameters = parameters;
@@ -55,29 +64,50 @@ NSString *SBProcedureGetMembership = @"getMembership";
     [[WLClient sharedInstance] invokeProcedure:invocationData withDelegate:self];
 }
 
-- (void)connect
-{
-    if (!self.connected) {
-        [[WLClient sharedInstance] wlConnectWithDelegate:self];
-    }
-}
+
+#pragma Worklight Client Delegate
 
 - (void)onSuccess:(WLResponse *)response
 {
+    NSDictionary *jsonData = [response getResponseJson];
+    NSString *procedure = self.procedure;
+    self.procedure = nil;
     
+    if ([procedure isEqualToString:SBProcedureValidateMembership])
+    {
+        if ([self.delegate respondsToSelector:@selector(webAPI:didValidateMembershipWithOutput:)]) {
+            SBValidateMembershipOutput *output = [[SBValidateMembershipOutput alloc] initWithJsonData:jsonData];
+            [self.delegate webAPI:self didValidateMembershipWithOutput:output];
+        }
+    }
+    
+    else if ([procedure isEqualToString:SBProcedureGetMembership])
+    {
+        if ([self.delegate respondsToSelector:@selector(webAPI:didGetMembershipWithOutput:)]) {
+            SBGetMembershipOutput *output = [[SBGetMembershipOutput alloc] initWithJsonData:jsonData];
+            [self.delegate webAPI:self didGetMembershipWithOutput:output];
+        }
+    }
+    
+    else if ([procedure isEqualToString:@""])
+    {
+        // TODO Implement further web services
+    }
+    
+    else
+    {
+        // Finally this must be the connect attempt.
+        self.connected = YES;
+        
+        if ([self.delegate respondsToSelector:@selector(webAPIdidConnectToBackend:)]) {
+            [self.delegate webAPIdidConnectToBackend:self];
+        }
+    }
 }
 
 - (void)onFailure:(WLFailResponse *)response
 {
     // TODO Implement method
-}
-
-+ (SBWebAPI *)sharedInstance
-{
-    if (!singleton) {
-        singleton = [[SBWebAPI alloc] init];
-    }
-    return singleton;
 }
 
 @end

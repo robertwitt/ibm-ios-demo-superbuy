@@ -7,8 +7,9 @@
 //
 
 #import "SBModelObject.h"
-#import "SBMembership.h"
 
+
+@class SBMembership;
 
 @interface SBMshTier : SBModelObject
 
