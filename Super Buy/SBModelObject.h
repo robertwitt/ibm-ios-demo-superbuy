@@ -11,5 +11,6 @@
 - (id)initWithJsonData:(NSDictionary *)jsonData;
 - (id)initWithJsonData:(NSDictionary *)jsonData header:(SBModelObject *)header;
 - (NSDate *)dateFromString:(NSString *)string;
+- (NSDate *)dateFromTimestamp:(NSString *)timestamp;
 
 @end

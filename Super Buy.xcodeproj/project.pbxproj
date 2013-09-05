@@ -22,6 +22,17 @@
 		E13834B717D3650600CA4457 /* SBGetMemberInput.m in Sources */ = {isa = PBXBuildFile; fileRef = E13834B617D3650600CA4457 /* SBGetMemberInput.m */; };
 		E13834BA17D3655A00CA4457 /* SBGetMemberOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = E13834B917D3655A00CA4457 /* SBGetMemberOutput.m */; };
 		E13834BD17D3675D00CA4457 /* SBMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E13834BC17D3675D00CA4457 /* SBMemberViewController.m */; };
+		E1443EF617D9012600134E03 /* SBPointAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = E1443EF517D9012600134E03 /* SBPointAccount.m */; };
+		E1443EF917D9019100134E03 /* SBPointTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = E1443EF817D9019100134E03 /* SBPointTransaction.m */; };
+		E1443EFC17D90A2400134E03 /* SBGetPointAccountInput.m in Sources */ = {isa = PBXBuildFile; fileRef = E1443EFB17D90A2400134E03 /* SBGetPointAccountInput.m */; };
+		E1443EFF17D90A5600134E03 /* SBGetPointAccountOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = E1443EFE17D90A5600134E03 /* SBGetPointAccountOutput.m */; };
+		E1443F0217D90C9500134E03 /* SBPointAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1443F0117D90C9500134E03 /* SBPointAccountViewController.m */; };
+		E1443F0517D91C4400134E03 /* SBBonusCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1443F0417D91C4400134E03 /* SBBonusCodeViewController.m */; };
+		E1443F0817D91FF200134E03 /* SBMemberActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = E1443F0717D91FF200134E03 /* SBMemberActivity.m */; };
+		E1443F0B17D9200500134E03 /* SBMaGeneral.m in Sources */ = {isa = PBXBuildFile; fileRef = E1443F0A17D9200500134E03 /* SBMaGeneral.m */; };
+		E1443F0E17D9201400134E03 /* SBMaSpecific.m in Sources */ = {isa = PBXBuildFile; fileRef = E1443F0D17D9201400134E03 /* SBMaSpecific.m */; };
+		E1443F1117D924A200134E03 /* SBEnterBonusCodeInput.m in Sources */ = {isa = PBXBuildFile; fileRef = E1443F1017D924A100134E03 /* SBEnterBonusCodeInput.m */; };
+		E1443F1417D924E100134E03 /* SBEnterBonusCodeOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = E1443F1317D924E100134E03 /* SBEnterBonusCodeOutput.m */; };
 		E180C94017D210F1001C2742 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E180C93F17D210F1001C2742 /* UIKit.framework */; };
 		E180C94217D210F1001C2742 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E180C94117D210F1001C2742 /* Foundation.framework */; };
 		E180C94417D210F1001C2742 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E180C94317D210F1001C2742 /* CoreGraphics.framework */; };
@@ -81,6 +92,28 @@
 		E13834B917D3655A00CA4457 /* SBGetMemberOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBGetMemberOutput.m; sourceTree = "<group>"; };
 		E13834BB17D3675D00CA4457 /* SBMemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMemberViewController.h; sourceTree = "<group>"; };
 		E13834BC17D3675D00CA4457 /* SBMemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMemberViewController.m; sourceTree = "<group>"; };
+		E1443EF417D9012600134E03 /* SBPointAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPointAccount.h; sourceTree = "<group>"; };
+		E1443EF517D9012600134E03 /* SBPointAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPointAccount.m; sourceTree = "<group>"; };
+		E1443EF717D9019100134E03 /* SBPointTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPointTransaction.h; sourceTree = "<group>"; };
+		E1443EF817D9019100134E03 /* SBPointTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPointTransaction.m; sourceTree = "<group>"; };
+		E1443EFA17D90A2400134E03 /* SBGetPointAccountInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBGetPointAccountInput.h; sourceTree = "<group>"; };
+		E1443EFB17D90A2400134E03 /* SBGetPointAccountInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBGetPointAccountInput.m; sourceTree = "<group>"; };
+		E1443EFD17D90A5600134E03 /* SBGetPointAccountOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBGetPointAccountOutput.h; sourceTree = "<group>"; };
+		E1443EFE17D90A5600134E03 /* SBGetPointAccountOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBGetPointAccountOutput.m; sourceTree = "<group>"; };
+		E1443F0017D90C9500134E03 /* SBPointAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPointAccountViewController.h; sourceTree = "<group>"; };
+		E1443F0117D90C9500134E03 /* SBPointAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPointAccountViewController.m; sourceTree = "<group>"; };
+		E1443F0317D91C4400134E03 /* SBBonusCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBBonusCodeViewController.h; sourceTree = "<group>"; };
+		E1443F0417D91C4400134E03 /* SBBonusCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBBonusCodeViewController.m; sourceTree = "<group>"; };
+		E1443F0617D91FF200134E03 /* SBMemberActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMemberActivity.h; sourceTree = "<group>"; };
+		E1443F0717D91FF200134E03 /* SBMemberActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMemberActivity.m; sourceTree = "<group>"; };
+		E1443F0917D9200500134E03 /* SBMaGeneral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMaGeneral.h; sourceTree = "<group>"; };
+		E1443F0A17D9200500134E03 /* SBMaGeneral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMaGeneral.m; sourceTree = "<group>"; };
+		E1443F0C17D9201400134E03 /* SBMaSpecific.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMaSpecific.h; sourceTree = "<group>"; };
+		E1443F0D17D9201400134E03 /* SBMaSpecific.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMaSpecific.m; sourceTree = "<group>"; };
+		E1443F0F17D924A100134E03 /* SBEnterBonusCodeInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBEnterBonusCodeInput.h; sourceTree = "<group>"; };
+		E1443F1017D924A100134E03 /* SBEnterBonusCodeInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBEnterBonusCodeInput.m; sourceTree = "<group>"; };
+		E1443F1217D924E100134E03 /* SBEnterBonusCodeOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBEnterBonusCodeOutput.h; sourceTree = "<group>"; };
+		E1443F1317D924E100134E03 /* SBEnterBonusCodeOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBEnterBonusCodeOutput.m; sourceTree = "<group>"; };
 		E180C93C17D210F1001C2742 /* Super Buy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Super Buy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E180C93F17D210F1001C2742 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E180C94117D210F1001C2742 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -158,6 +191,14 @@
 				E13834B617D3650600CA4457 /* SBGetMemberInput.m */,
 				E13834B817D3655A00CA4457 /* SBGetMemberOutput.h */,
 				E13834B917D3655A00CA4457 /* SBGetMemberOutput.m */,
+				E1443EFA17D90A2400134E03 /* SBGetPointAccountInput.h */,
+				E1443EFB17D90A2400134E03 /* SBGetPointAccountInput.m */,
+				E1443EFD17D90A5600134E03 /* SBGetPointAccountOutput.h */,
+				E1443EFE17D90A5600134E03 /* SBGetPointAccountOutput.m */,
+				E1443F0F17D924A100134E03 /* SBEnterBonusCodeInput.h */,
+				E1443F1017D924A100134E03 /* SBEnterBonusCodeInput.m */,
+				E1443F1217D924E100134E03 /* SBEnterBonusCodeOutput.h */,
+				E1443F1317D924E100134E03 /* SBEnterBonusCodeOutput.m */,
 			);
 			name = "Web Layer";
 			sourceTree = "<group>";
@@ -239,6 +280,10 @@
 				E13834A417D3436500CA4457 /* SBRegisterViewController.m */,
 				E13834BB17D3675D00CA4457 /* SBMemberViewController.h */,
 				E13834BC17D3675D00CA4457 /* SBMemberViewController.m */,
+				E1443F0017D90C9500134E03 /* SBPointAccountViewController.h */,
+				E1443F0117D90C9500134E03 /* SBPointAccountViewController.m */,
+				E1443F0317D91C4400134E03 /* SBBonusCodeViewController.h */,
+				E1443F0417D91C4400134E03 /* SBBonusCodeViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -269,6 +314,16 @@
 				E13834B017D3613300CA4457 /* SBMember.m */,
 				E13834B217D3614300CA4457 /* SBMembAddress.h */,
 				E13834B317D3614400CA4457 /* SBMembAddress.m */,
+				E1443EF417D9012600134E03 /* SBPointAccount.h */,
+				E1443EF517D9012600134E03 /* SBPointAccount.m */,
+				E1443EF717D9019100134E03 /* SBPointTransaction.h */,
+				E1443EF817D9019100134E03 /* SBPointTransaction.m */,
+				E1443F0617D91FF200134E03 /* SBMemberActivity.h */,
+				E1443F0717D91FF200134E03 /* SBMemberActivity.m */,
+				E1443F0917D9200500134E03 /* SBMaGeneral.h */,
+				E1443F0A17D9200500134E03 /* SBMaGeneral.m */,
+				E1443F0C17D9201400134E03 /* SBMaSpecific.h */,
+				E1443F0D17D9201400134E03 /* SBMaSpecific.m */,
 				E180C9CB17D249DE001C2742 /* SBMessageArray.h */,
 				E180C9CC17D249DE001C2742 /* SBMessageArray.m */,
 				E13834AC17D35B7100CA4457 /* SBPersistenceCoordinator.h */,
@@ -369,6 +424,17 @@
 				E13834B717D3650600CA4457 /* SBGetMemberInput.m in Sources */,
 				E13834BA17D3655A00CA4457 /* SBGetMemberOutput.m in Sources */,
 				E13834BD17D3675D00CA4457 /* SBMemberViewController.m in Sources */,
+				E1443EF617D9012600134E03 /* SBPointAccount.m in Sources */,
+				E1443EF917D9019100134E03 /* SBPointTransaction.m in Sources */,
+				E1443EFC17D90A2400134E03 /* SBGetPointAccountInput.m in Sources */,
+				E1443EFF17D90A5600134E03 /* SBGetPointAccountOutput.m in Sources */,
+				E1443F0217D90C9500134E03 /* SBPointAccountViewController.m in Sources */,
+				E1443F0517D91C4400134E03 /* SBBonusCodeViewController.m in Sources */,
+				E1443F0817D91FF200134E03 /* SBMemberActivity.m in Sources */,
+				E1443F0B17D9200500134E03 /* SBMaGeneral.m in Sources */,
+				E1443F0E17D9201400134E03 /* SBMaSpecific.m in Sources */,
+				E1443F1117D924A200134E03 /* SBEnterBonusCodeInput.m in Sources */,
+				E1443F1417D924E100134E03 /* SBEnterBonusCodeOutput.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

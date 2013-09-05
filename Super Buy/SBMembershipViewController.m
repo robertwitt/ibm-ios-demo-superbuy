@@ -9,6 +9,7 @@
 #import "SBMembershipViewController.h"
 #import "SBLoginViewController.h"
 #import "SBMemberViewController.h"
+#import "SBPointAccountViewController.h"
 #import "SBWebAPI.h"
 #import "SBPersistenceCoordinator.h"
 
@@ -26,6 +27,7 @@ static NSString *SBCellPointAccount = @"PointAccountCell";
 
 static NSString *SBSegueLogin = @"LoginSegue";
 static NSString *SBSegueMember = @"MemberSegue";
+static NSString *SBSeguePointAccount = @"PointAccountSegue";
 
 
 @interface SBMembershipViewController () <SBLoginViewControllerDelegate, SBWebAPIDelegate>
@@ -39,6 +41,7 @@ static NSString *SBSegueMember = @"MemberSegue";
 - (UITableViewCell *)pointAccountCellForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (void)prepareForLoginSegue:(UIStoryboardSegue *)segue sender:(id)sender;
 - (void)prepareForMemberSegue:(UIStoryboardSegue *)segue sender:(id)sender;
+- (void)prepareForPointAccountSegue:(UIStoryboardSegue *)segue sender:(id)sender;
 
 @end
 
@@ -103,8 +106,12 @@ static NSString *SBSegueMember = @"MemberSegue";
 {
     if ([segue.identifier isEqualToString:SBSegueLogin]) {
         [self prepareForLoginSegue:segue sender:sender];
-    } else if ([segue.identifier isEqualToString:SBSegueMember]) {
+    }
+    else if ([segue.identifier isEqualToString:SBSegueMember]) {
         [self prepareForMemberSegue:segue sender:sender];
+    }
+    else if ([segue.identifier isEqualToString:SBSeguePointAccount]) {
+        [self prepareForPointAccountSegue:segue sender:sender];
     }
 }
 
@@ -118,6 +125,15 @@ static NSString *SBSegueMember = @"MemberSegue";
 {
     SBMemberViewController *controller = (SBMemberViewController *)segue.destinationViewController;
     controller.memberID = self.membership.memberID;
+}
+
+- (void)prepareForPointAccountSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell *)sender];
+    SBMshPointAccount *pointAccount = [self.membership.pointAccounts objectAtIndex:indexPath.row];
+    
+    SBPointAccountViewController *controller = (SBPointAccountViewController *)segue.destinationViewController;
+    controller.pointAccountID = pointAccount.ID;
 }
 
 

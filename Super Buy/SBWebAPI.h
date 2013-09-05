@@ -12,6 +12,8 @@
 #import "SBGetMembershipOutput.h"
 #import "SBGetMemberInput.h"
 #import "SBGetMemberOutput.h"
+#import "SBGetPointAccountInput.h"
+#import "SBGetPointAccountOutput.h"
 
 
 @protocol SBWebAPIDelegate;
@@ -24,6 +26,7 @@
 - (void)validateMembershipWithInput:(SBValidateMembershipInput *)input;
 - (void)getMembershipWithInput:(SBGetMembershipInput *)input;
 - (void)getMemberWithInput:(SBGetMemberInput *)input;
+- (void)getPointAccountWithInput:(SBGetPointAccountInput *)input;
 
 @end
 
@@ -42,5 +45,8 @@
 
 - (void)webAPI:(SBWebAPI *)webAPI didGetMemberWithOutput:(SBGetMemberOutput *)output;
 - (void)webAPI:(SBWebAPI *)webAPI didFailGettingMemberWithInput:(SBGetMemberInput *)input error:(NSError *)error;
+
+- (void)webAPI:(SBWebAPI *)webAPI didGetPointAccountWithOutput:(SBGetPointAccountOutput *)output;
+- (void)webAPI:(SBWebAPI *)webAPI didFailGettingPointAccountWithInput:(SBGetPointAccountInput *)input error:(NSError *)error;
 
 @end

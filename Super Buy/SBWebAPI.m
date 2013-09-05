@@ -16,6 +16,7 @@ static NSString *SBAdapter = @"SOAPCRMMobileLoyalty";
 static NSString *SBProcedureValidateMembership = @"validateMembership";
 static NSString *SBProcedureGetMembership = @"getMembership";
 static NSString *SBProcedureGetMember = @"getMember";
+static NSString *SBProcedureGetPointAccount = @"getPointAccount";
 
 
 @interface SBWebAPI () <WLDelegate>
@@ -65,6 +66,12 @@ BOOL connected = NO;
            withParameters:@[input.memberID]];
 }
 
+- (void)getPointAccountWithInput:(SBGetPointAccountInput *)input
+{
+    [self invokeProcedure:SBProcedureGetPointAccount
+           withParameters:@[input.pointAccountID]];
+}
+
 - (void)invokeProcedure:(NSString *)procedure withParameters:(NSArray *)parameters
 {
     self.procedure = procedure;
@@ -104,6 +111,14 @@ BOOL connected = NO;
         if ([self.delegate respondsToSelector:@selector(webAPI:didGetMemberWithOutput:)]) {
             SBGetMemberOutput *output = [[SBGetMemberOutput alloc] initWithJsonData:jsonData];
             [self.delegate webAPI:self didGetMemberWithOutput:output];
+        }
+    }
+    
+    else if ([procedure isEqualToString:SBProcedureGetPointAccount])
+    {
+        if ([self.delegate respondsToSelector:@selector(webAPI:didGetPointAccountWithOutput:)]) {
+            SBGetPointAccountOutput *output = [[SBGetPointAccountOutput alloc] initWithJsonData:jsonData];
+            [self.delegate webAPI:self didGetPointAccountWithOutput:output];
         }
     }
     

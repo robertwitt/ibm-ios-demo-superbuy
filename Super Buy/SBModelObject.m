@@ -34,4 +34,13 @@
     return date;
 }
 
+- (NSDate *)dateFromTimestamp:(NSString *)timestamp
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"yyyyMMddHHmmss";
+    NSDate *date = [dateFormatter dateFromString:timestamp];
+    
+    return date;
+}
+
 @end

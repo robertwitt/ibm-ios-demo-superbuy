@@ -62,6 +62,8 @@ static NSString *SBCellMember = @"MemberCell";
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
+    
     if (!self.member) {
         [self.webAPI connectToBackend];
     }
