@@ -16,4 +16,14 @@
     return NSLocalizedString(key, nil);
 }
 
+- (void)showSimpleAlertWithTitle:(NSString *)title message:(NSString *)message
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
+                                                        message:message
+                                                       delegate:nil
+                                              cancelButtonTitle:[self localizedString:@"OK"]
+                                              otherButtonTitles:nil];
+    [alertView show];
+}
+
 @end

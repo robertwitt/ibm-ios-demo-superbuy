@@ -9,5 +9,6 @@
 @interface UIViewController (Addon)
 
 - (NSString *)localizedString:(NSString *)key;
+- (void)showSimpleAlertWithTitle:(NSString *)title message:(NSString *)message;
 
 @end

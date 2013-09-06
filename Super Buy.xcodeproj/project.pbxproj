@@ -33,6 +33,11 @@
 		E1443F0E17D9201400134E03 /* SBMaSpecific.m in Sources */ = {isa = PBXBuildFile; fileRef = E1443F0D17D9201400134E03 /* SBMaSpecific.m */; };
 		E1443F1117D924A200134E03 /* SBEnterBonusCodeInput.m in Sources */ = {isa = PBXBuildFile; fileRef = E1443F1017D924A100134E03 /* SBEnterBonusCodeInput.m */; };
 		E1443F1417D924E100134E03 /* SBEnterBonusCodeOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = E1443F1317D924E100134E03 /* SBEnterBonusCodeOutput.m */; };
+		E16A4EBA17DA28A600AEBD92 /* SBProductCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = E16A4EB917DA28A600AEBD92 /* SBProductCatalog.m */; };
+		E16A4EBD17DA28C100AEBD92 /* SBRewardProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = E16A4EBC17DA28C100AEBD92 /* SBRewardProduct.m */; };
+		E16A4EC017DA2C8A00AEBD92 /* SBGetRewardProductCatalogInput.m in Sources */ = {isa = PBXBuildFile; fileRef = E16A4EBF17DA2C8A00AEBD92 /* SBGetRewardProductCatalogInput.m */; };
+		E16A4EC317DA2CBA00AEBD92 /* SBGetRewardProductCatalogOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = E16A4EC217DA2CBA00AEBD92 /* SBGetRewardProductCatalogOutput.m */; };
+		E16A4EC617DA34C100AEBD92 /* SBProductCatalogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E16A4EC517DA34C100AEBD92 /* SBProductCatalogViewController.m */; };
 		E180C94017D210F1001C2742 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E180C93F17D210F1001C2742 /* UIKit.framework */; };
 		E180C94217D210F1001C2742 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E180C94117D210F1001C2742 /* Foundation.framework */; };
 		E180C94417D210F1001C2742 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E180C94317D210F1001C2742 /* CoreGraphics.framework */; };
@@ -114,6 +119,16 @@
 		E1443F1017D924A100134E03 /* SBEnterBonusCodeInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBEnterBonusCodeInput.m; sourceTree = "<group>"; };
 		E1443F1217D924E100134E03 /* SBEnterBonusCodeOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBEnterBonusCodeOutput.h; sourceTree = "<group>"; };
 		E1443F1317D924E100134E03 /* SBEnterBonusCodeOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBEnterBonusCodeOutput.m; sourceTree = "<group>"; };
+		E16A4EB817DA28A600AEBD92 /* SBProductCatalog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBProductCatalog.h; sourceTree = "<group>"; };
+		E16A4EB917DA28A600AEBD92 /* SBProductCatalog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBProductCatalog.m; sourceTree = "<group>"; };
+		E16A4EBB17DA28C100AEBD92 /* SBRewardProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBRewardProduct.h; sourceTree = "<group>"; };
+		E16A4EBC17DA28C100AEBD92 /* SBRewardProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBRewardProduct.m; sourceTree = "<group>"; };
+		E16A4EBE17DA2C8A00AEBD92 /* SBGetRewardProductCatalogInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBGetRewardProductCatalogInput.h; sourceTree = "<group>"; };
+		E16A4EBF17DA2C8A00AEBD92 /* SBGetRewardProductCatalogInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBGetRewardProductCatalogInput.m; sourceTree = "<group>"; };
+		E16A4EC117DA2CBA00AEBD92 /* SBGetRewardProductCatalogOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBGetRewardProductCatalogOutput.h; sourceTree = "<group>"; };
+		E16A4EC217DA2CBA00AEBD92 /* SBGetRewardProductCatalogOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBGetRewardProductCatalogOutput.m; sourceTree = "<group>"; };
+		E16A4EC417DA34C100AEBD92 /* SBProductCatalogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBProductCatalogViewController.h; sourceTree = "<group>"; };
+		E16A4EC517DA34C100AEBD92 /* SBProductCatalogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBProductCatalogViewController.m; sourceTree = "<group>"; };
 		E180C93C17D210F1001C2742 /* Super Buy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Super Buy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E180C93F17D210F1001C2742 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E180C94117D210F1001C2742 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -199,6 +214,10 @@
 				E1443F1017D924A100134E03 /* SBEnterBonusCodeInput.m */,
 				E1443F1217D924E100134E03 /* SBEnterBonusCodeOutput.h */,
 				E1443F1317D924E100134E03 /* SBEnterBonusCodeOutput.m */,
+				E16A4EBE17DA2C8A00AEBD92 /* SBGetRewardProductCatalogInput.h */,
+				E16A4EBF17DA2C8A00AEBD92 /* SBGetRewardProductCatalogInput.m */,
+				E16A4EC117DA2CBA00AEBD92 /* SBGetRewardProductCatalogOutput.h */,
+				E16A4EC217DA2CBA00AEBD92 /* SBGetRewardProductCatalogOutput.m */,
 			);
 			name = "Web Layer";
 			sourceTree = "<group>";
@@ -284,6 +303,8 @@
 				E1443F0117D90C9500134E03 /* SBPointAccountViewController.m */,
 				E1443F0317D91C4400134E03 /* SBBonusCodeViewController.h */,
 				E1443F0417D91C4400134E03 /* SBBonusCodeViewController.m */,
+				E16A4EC417DA34C100AEBD92 /* SBProductCatalogViewController.h */,
+				E16A4EC517DA34C100AEBD92 /* SBProductCatalogViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -325,6 +346,10 @@
 				E1443F0C17D9201400134E03 /* SBMaSpecific.h */,
 				E1443F0D17D9201400134E03 /* SBMaSpecific.m */,
 				E180C9CB17D249DE001C2742 /* SBMessageArray.h */,
+				E16A4EB817DA28A600AEBD92 /* SBProductCatalog.h */,
+				E16A4EB917DA28A600AEBD92 /* SBProductCatalog.m */,
+				E16A4EBB17DA28C100AEBD92 /* SBRewardProduct.h */,
+				E16A4EBC17DA28C100AEBD92 /* SBRewardProduct.m */,
 				E180C9CC17D249DE001C2742 /* SBMessageArray.m */,
 				E13834AC17D35B7100CA4457 /* SBPersistenceCoordinator.h */,
 				E13834AD17D35B7100CA4457 /* SBPersistenceCoordinator.m */,
@@ -435,6 +460,11 @@
 				E1443F0E17D9201400134E03 /* SBMaSpecific.m in Sources */,
 				E1443F1117D924A200134E03 /* SBEnterBonusCodeInput.m in Sources */,
 				E1443F1417D924E100134E03 /* SBEnterBonusCodeOutput.m in Sources */,
+				E16A4EBA17DA28A600AEBD92 /* SBProductCatalog.m in Sources */,
+				E16A4EBD17DA28C100AEBD92 /* SBRewardProduct.m in Sources */,
+				E16A4EC017DA2C8A00AEBD92 /* SBGetRewardProductCatalogInput.m in Sources */,
+				E16A4EC317DA2CBA00AEBD92 /* SBGetRewardProductCatalogOutput.m in Sources */,
+				E16A4EC617DA34C100AEBD92 /* SBProductCatalogViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

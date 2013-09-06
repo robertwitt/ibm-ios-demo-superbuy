@@ -17,6 +17,8 @@ static NSString *SBProcedureValidateMembership = @"validateMembership";
 static NSString *SBProcedureGetMembership = @"getMembership";
 static NSString *SBProcedureGetMember = @"getMember";
 static NSString *SBProcedureGetPointAccount = @"getPointAccount";
+static NSString *SBProcedureEnterBonusCode = @"enterBonusCode";
+static NSString *SBProcedureGetRewardProductCatalog = @"getRewardProductCatalog";
 
 
 @interface SBWebAPI () <WLDelegate>
@@ -72,6 +74,17 @@ BOOL connected = NO;
            withParameters:@[input.pointAccountID]];
 }
 
+- (void)enterBonusCodeWithInput:(SBEnterBonusCodeInput *)input
+{
+    [self invokeProcedure:SBProcedureEnterBonusCode
+           withParameters:@[input.bonusCode, input.membershipID]];
+}
+
+- (void)getRewardProductCatalog:(SBGetRewardProductCatalogInput *)input
+{
+    [self invokeProcedure:SBProcedureGetRewardProductCatalog withParameters:nil];
+}
+
 - (void)invokeProcedure:(NSString *)procedure withParameters:(NSArray *)parameters
 {
     self.procedure = procedure;
@@ -119,6 +132,22 @@ BOOL connected = NO;
         if ([self.delegate respondsToSelector:@selector(webAPI:didGetPointAccountWithOutput:)]) {
             SBGetPointAccountOutput *output = [[SBGetPointAccountOutput alloc] initWithJsonData:jsonData];
             [self.delegate webAPI:self didGetPointAccountWithOutput:output];
+        }
+    }
+    
+    else if ([procedure isEqualToString:SBProcedureEnterBonusCode])
+    {
+        if ([self.delegate respondsToSelector:@selector(webAPI:didEnterBonusCodeWithOutput:)]) {
+            SBEnterBonusCodeOutput *output = [[SBEnterBonusCodeOutput alloc] initWithJsonData:jsonData];
+            [self.delegate webAPI:self didEnterBonusCodeWithOutput:output];
+        }
+    }
+    
+    else if ([procedure isEqualToString:SBProcedureGetRewardProductCatalog])
+    {
+        if ([self.delegate respondsToSelector:@selector(webAPI:didGetRewardProductCatalogWithOutput:)]) {
+            SBGetRewardProductCatalogOutput *output = [[SBGetRewardProductCatalogOutput alloc] initWithJsonData:jsonData];
+            [self.delegate webAPI:self didGetRewardProductCatalogWithOutput:output];
         }
     }
     

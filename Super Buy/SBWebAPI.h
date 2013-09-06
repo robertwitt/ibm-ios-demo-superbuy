@@ -14,6 +14,10 @@
 #import "SBGetMemberOutput.h"
 #import "SBGetPointAccountInput.h"
 #import "SBGetPointAccountOutput.h"
+#import "SBEnterBonusCodeInput.h"
+#import "SBEnterBonusCodeOutput.h"
+#import "SBGetRewardProductCatalogInput.h"
+#import "SBGetRewardProductCatalogOutput.h"
 
 
 @protocol SBWebAPIDelegate;
@@ -27,6 +31,8 @@
 - (void)getMembershipWithInput:(SBGetMembershipInput *)input;
 - (void)getMemberWithInput:(SBGetMemberInput *)input;
 - (void)getPointAccountWithInput:(SBGetPointAccountInput *)input;
+- (void)enterBonusCodeWithInput:(SBEnterBonusCodeInput *)input;
+- (void)getRewardProductCatalog:(SBGetRewardProductCatalogInput *)input;
 
 @end
 
@@ -48,5 +54,11 @@
 
 - (void)webAPI:(SBWebAPI *)webAPI didGetPointAccountWithOutput:(SBGetPointAccountOutput *)output;
 - (void)webAPI:(SBWebAPI *)webAPI didFailGettingPointAccountWithInput:(SBGetPointAccountInput *)input error:(NSError *)error;
+
+- (void)webAPI:(SBWebAPI *)webAPI didEnterBonusCodeWithOutput:(SBEnterBonusCodeOutput *)output;
+- (void)webAPI:(SBWebAPI *)webAPI didFailEnteringBonusCodeWithInput:(SBEnterBonusCodeInput *)input error:(NSError *)error;
+
+- (void)webAPI:(SBWebAPI *)webAPI didGetRewardProductCatalogWithOutput:(SBGetRewardProductCatalogOutput *)output;
+- (void)webAPI:(SBWebAPI *)webAPI didFailGettingRewardProductCatalogWithInput:(SBGetRewardProductCatalogInput *)input error:(NSError *)error;
 
 @end
