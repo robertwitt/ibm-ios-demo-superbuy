@@ -283,6 +283,14 @@ static NSString *SBSeguePointAccount = @"PointAccountSegue";
     }];
 }
 
+- (void)loginViewController:(SBLoginViewController *)controller didLoginWithRegisteredMembership:(SBMembership *)membership
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        self.membership = membership;
+        [self.tableView reloadData];
+    }];
+}
+
 
 #pragma mark Web API Delegate
 

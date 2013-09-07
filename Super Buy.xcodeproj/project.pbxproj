@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E11EA66417DB0F3700DED21B /* SBRegisterMembershipInput.m in Sources */ = {isa = PBXBuildFile; fileRef = E11EA66317DB0F3700DED21B /* SBRegisterMembershipInput.m */; };
+		E11EA66717DB0F5300DED21B /* SBRegisterMembershipOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = E11EA66617DB0F5300DED21B /* SBRegisterMembershipOutput.m */; };
+		E11EA67017DB2E7300DED21B /* SBPurchaseRewardProductInput.m in Sources */ = {isa = PBXBuildFile; fileRef = E11EA66F17DB2E7300DED21B /* SBPurchaseRewardProductInput.m */; };
 		E138349217D3182F00CA4457 /* SBGetMembershipInput.m in Sources */ = {isa = PBXBuildFile; fileRef = E138349117D3182F00CA4457 /* SBGetMembershipInput.m */; };
 		E138349517D3187000CA4457 /* SBGetMembershipOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = E138349417D3187000CA4457 /* SBGetMembershipOutput.m */; };
 		E138349917D332CF00CA4457 /* SBValidateMembershipInput.m in Sources */ = {isa = PBXBuildFile; fileRef = E138349817D332CF00CA4457 /* SBValidateMembershipInput.m */; };
@@ -67,6 +70,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E11EA66217DB0F3700DED21B /* SBRegisterMembershipInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBRegisterMembershipInput.h; sourceTree = "<group>"; };
+		E11EA66317DB0F3700DED21B /* SBRegisterMembershipInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBRegisterMembershipInput.m; sourceTree = "<group>"; };
+		E11EA66517DB0F5300DED21B /* SBRegisterMembershipOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBRegisterMembershipOutput.h; sourceTree = "<group>"; };
+		E11EA66617DB0F5300DED21B /* SBRegisterMembershipOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBRegisterMembershipOutput.m; sourceTree = "<group>"; };
+		E11EA66E17DB2E7300DED21B /* SBPurchaseRewardProductInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPurchaseRewardProductInput.h; sourceTree = "<group>"; };
+		E11EA66F17DB2E7300DED21B /* SBPurchaseRewardProductInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPurchaseRewardProductInput.m; sourceTree = "<group>"; };
 		E138349017D3182F00CA4457 /* SBGetMembershipInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBGetMembershipInput.h; sourceTree = "<group>"; };
 		E138349117D3182F00CA4457 /* SBGetMembershipInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBGetMembershipInput.m; sourceTree = "<group>"; };
 		E138349317D3187000CA4457 /* SBGetMembershipOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBGetMembershipOutput.h; sourceTree = "<group>"; };
@@ -198,6 +207,10 @@
 				E138349817D332CF00CA4457 /* SBValidateMembershipInput.m */,
 				E138349A17D3331A00CA4457 /* SBValidateMembershipOutput.h */,
 				E138349B17D3331A00CA4457 /* SBValidateMembershipOutput.m */,
+				E11EA66217DB0F3700DED21B /* SBRegisterMembershipInput.h */,
+				E11EA66317DB0F3700DED21B /* SBRegisterMembershipInput.m */,
+				E11EA66517DB0F5300DED21B /* SBRegisterMembershipOutput.h */,
+				E11EA66617DB0F5300DED21B /* SBRegisterMembershipOutput.m */,
 				E138349017D3182F00CA4457 /* SBGetMembershipInput.h */,
 				E138349117D3182F00CA4457 /* SBGetMembershipInput.m */,
 				E138349317D3187000CA4457 /* SBGetMembershipOutput.h */,
@@ -218,6 +231,8 @@
 				E16A4EBF17DA2C8A00AEBD92 /* SBGetRewardProductCatalogInput.m */,
 				E16A4EC117DA2CBA00AEBD92 /* SBGetRewardProductCatalogOutput.h */,
 				E16A4EC217DA2CBA00AEBD92 /* SBGetRewardProductCatalogOutput.m */,
+				E11EA66E17DB2E7300DED21B /* SBPurchaseRewardProductInput.h */,
+				E11EA66F17DB2E7300DED21B /* SBPurchaseRewardProductInput.m */,
 			);
 			name = "Web Layer";
 			sourceTree = "<group>";
@@ -465,6 +480,9 @@
 				E16A4EC017DA2C8A00AEBD92 /* SBGetRewardProductCatalogInput.m in Sources */,
 				E16A4EC317DA2CBA00AEBD92 /* SBGetRewardProductCatalogOutput.m in Sources */,
 				E16A4EC617DA34C100AEBD92 /* SBProductCatalogViewController.m in Sources */,
+				E11EA66417DB0F3700DED21B /* SBRegisterMembershipInput.m in Sources */,
+				E11EA66717DB0F5300DED21B /* SBRegisterMembershipOutput.m in Sources */,
+				E11EA67017DB2E7300DED21B /* SBPurchaseRewardProductInput.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

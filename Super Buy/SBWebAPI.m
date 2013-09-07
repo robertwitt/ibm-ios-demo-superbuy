@@ -14,6 +14,7 @@
 
 static NSString *SBAdapter = @"SOAPCRMMobileLoyalty";
 static NSString *SBProcedureValidateMembership = @"validateMembership";
+static NSString *SBProcedureRegisterMembership = @"registerMembership";
 static NSString *SBProcedureGetMembership = @"getMembership";
 static NSString *SBProcedureGetMember = @"getMember";
 static NSString *SBProcedureGetPointAccount = @"getPointAccount";
@@ -54,6 +55,12 @@ BOOL connected = NO;
 {
     [self invokeProcedure:SBProcedureValidateMembership
            withParameters:@[input.memberID, input.membershipID]];
+}
+
+- (void)registerMembershipWithInput:(SBRegisterMembershipInput *)input
+{
+    [self invokeProcedure:SBProcedureRegisterMembership
+           withParameters:@[input.jsonData]];
 }
 
 - (void)getMembershipWithInput:(SBGetMembershipInput *)input
@@ -108,6 +115,14 @@ BOOL connected = NO;
         if ([self.delegate respondsToSelector:@selector(webAPI:didValidateMembershipWithOutput:)]) {
             SBValidateMembershipOutput *output = [[SBValidateMembershipOutput alloc] initWithJsonData:jsonData];
             [self.delegate webAPI:self didValidateMembershipWithOutput:output];
+        }
+    }
+    
+    else if ([procedure isEqualToString:SBProcedureRegisterMembership])
+    {
+        if ([self.delegate respondsToSelector:@selector(webAPI:didRegisterMembershipWithOutput:)]) {
+            SBRegisterMembershipOutput *output = [[SBRegisterMembershipOutput alloc] initWithJsonData:jsonData];
+            [self.delegate webAPI:self didRegisterMembershipWithOutput:output];
         }
     }
     

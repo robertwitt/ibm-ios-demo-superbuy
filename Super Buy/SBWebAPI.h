@@ -8,6 +8,8 @@
 
 #import "SBValidateMembershipInput.h"
 #import "SBValidateMembershipOutput.h"
+#import "SBRegisterMembershipInput.h"
+#import "SBRegisterMembershipOutput.h"
 #import "SBGetMembershipInput.h"
 #import "SBGetMembershipOutput.h"
 #import "SBGetMemberInput.h"
@@ -28,6 +30,7 @@
 
 - (void)connectToBackend;
 - (void)validateMembershipWithInput:(SBValidateMembershipInput *)input;
+- (void)registerMembershipWithInput:(SBRegisterMembershipInput *)input;
 - (void)getMembershipWithInput:(SBGetMembershipInput *)input;
 - (void)getMemberWithInput:(SBGetMemberInput *)input;
 - (void)getPointAccountWithInput:(SBGetPointAccountInput *)input;
@@ -45,6 +48,9 @@
 
 - (void)webAPI:(SBWebAPI *)webAPI didValidateMembershipWithOutput:(SBValidateMembershipOutput *)output;
 - (void)webAPI:(SBWebAPI *)webAPI didFailValidatingMembershipWithInput:(SBValidateMembershipInput *)input error:(NSError *)error;
+
+- (void)webAPI:(SBWebAPI *)webAPI didRegisterMembershipWithOutput:(SBRegisterMembershipOutput *)output;
+- (void)webAPI:(SBWebAPI *)webAPI didFailRegisteringMembershipWithInput:(SBRegisterMembershipInput *)input error:(NSError *)error;
 
 - (void)webAPI:(SBWebAPI *)webAPI didGetMembershipWithOutput:(SBGetMembershipOutput *)output;
 - (void)webAPI:(SBWebAPI *)webAPI didFailGettingMembershipWithInput:(SBGetMembershipInput *)input error:(NSError *)error;

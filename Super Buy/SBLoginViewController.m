@@ -7,16 +7,21 @@
 //
 
 #import "SBLoginViewController.h"
+#import "SBRegisterViewController.h"
 #import "SBWebAPI.h"
 
 
-@interface SBLoginViewController () <SBWebAPIDelegate>
+static NSString *SBSegueRegister = @"RegisterSegue";
+
+
+@interface SBLoginViewController () <SBRegisterViewControllerDelegate, SBWebAPIDelegate>
 
 @property (strong, nonatomic) SBWebAPI *webAPI;
 
 @property (weak, nonatomic) IBOutlet UITextField *membershipIDTextField;
 @property (weak, nonatomic) IBOutlet UITextField *memberIDTextField;
 
+- (void)prepareForRegisterSegue:(UIStoryboardSegue *)segue sender:(id)sender;
 - (void)login;
 
 - (IBAction)onLogin:(id)sender;
@@ -65,6 +70,34 @@
     [self.webAPI connectToBackend];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:SBSegueRegister]) {
+        [self prepareForRegisterSegue:segue sender:sender];
+    }
+}
+
+- (void)prepareForRegisterSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    SBRegisterViewController *controller = (SBRegisterViewController *)[segue.destinationViewController topViewController];
+    controller.delegate = self;
+}
+
+
+#pragma mark Register View Controller Delegate
+
+- (void)registerViewControllerDidCancelRegistration:(SBRegisterViewController *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)registerViewController:(SBRegisterViewController *)controller didRegisterMember:(SBMember *)member membership:(SBMembership *)membership
+{
+    if ([self.delegate respondsToSelector:@selector(loginViewController:didLoginWithRegisteredMembership:)]) {
+        [self.delegate loginViewController:self didLoginWithRegisteredMembership:membership];
+    }
+}
+
 
 #pragma mark Web API Delegate
 
@@ -75,6 +108,11 @@
     input.membershipID = self.membershipIDTextField.text;
     
     [self.webAPI validateMembershipWithInput:input];
+}
+
+- (void)webAPI:(SBWebAPI *)webAPI didFailConnectingToBackendWithError:(NSError *)error
+{
+    // TODO Implement method
 }
 
 - (void)webAPI:(SBWebAPI *)webAPI didValidateMembershipWithOutput:(SBValidateMembershipOutput *)output

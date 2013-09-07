@@ -7,6 +7,7 @@
 //
 
 #import "SBMembershipCredentials.h"
+#import "SBMembership.h"
 #import "SBMessageArray.h"
 
 
@@ -23,5 +24,8 @@
 
 - (void)loginViewControllerdidCancelLogin:(SBLoginViewController *)controller;
 - (void)loginViewController:(SBLoginViewController *)controller didLoginWithCredentials:(SBMembershipCredentials *)credentials;
+
+@optional
+- (void)loginViewController:(SBLoginViewController *)controller didLoginWithRegisteredMembership:(SBMembership *)membership;
 
 @end

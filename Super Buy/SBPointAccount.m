@@ -30,17 +30,22 @@
     
     // Parse point transactions
     NSMutableArray *transactions = [NSMutableArray array];
-    id txnData = [[jsonData objectForKey:@"Transactions"] objectForKey:@"item"];
+    id txnData = [jsonData objectForKey:@"Transactions"];
     
-    if ([txnData isKindOfClass:[NSArray class]]) {
-        for (NSDictionary *txnDate in txnData) {
-            SBPointTransaction *transaction = [[SBPointTransaction alloc] initWithJsonData:txnDate header:self];
+    if (txnData && ![txnData isKindOfClass:[NSString class]]) {
+        txnData = [txnData objectForKey:@"item"];
+        
+        if ([txnData isKindOfClass:[NSArray class]]) {
+            for (NSDictionary *txnDate in txnData) {
+                SBPointTransaction *transaction = [[SBPointTransaction alloc] initWithJsonData:txnDate header:self];
+                [transactions addObject:transaction];
+            }
+        } else {
+            SBPointTransaction *transaction = [[SBPointTransaction alloc] initWithJsonData:txnData header:self];
             [transactions addObject:transaction];
         }
-    } else {
-        SBPointTransaction *transaction = [[SBPointTransaction alloc] initWithJsonData:txnData header:self];
-        [transactions addObject:transaction];
     }
+    
     _transactions = transactions;
     
     return self;
