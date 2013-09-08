@@ -7,6 +7,7 @@
 //
 
 #import "SBProductCatalogViewController.h"
+#import "SBPersistenceAPI.h"
 #import "SBWebAPI.h"
 
 
@@ -17,6 +18,9 @@ static NSString *SBCellProduct = @"ProductCell";
 
 @property (strong, nonatomic) SBWebAPI *webAPI;
 @property (strong, nonatomic) SBProductCatalog *productCatalog;
+@property (strong, nonatomic) SBRewardProduct *purchasedProduct;
+
+- (SBPurchaseRewardProductInput *)inputFromProduct:(SBRewardProduct *)product;
 
 @end
 
@@ -89,11 +93,11 @@ static NSString *SBCellProduct = @"ProductCell";
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
-    SBRewardProduct *product = [self.productCatalog productAtIndexPath:indexPath];
+    self.purchasedProduct = [self.productCatalog productAtIndexPath:indexPath];
     
     NSString *message = [self localizedString:@"Do you want to order the product? This would cost you %@ points."];
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:product.productDescription
-                                                        message:[NSString stringWithFormat:message, product.points]
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:self.purchasedProduct.productDescription
+                                                        message:[NSString stringWithFormat:message, self.purchasedProduct.points]
                                                        delegate:self
                                               cancelButtonTitle:[self localizedString:@"Cancel"]
                                               otherButtonTitles:[self localizedString:@"Order"], nil];
@@ -106,8 +110,11 @@ static NSString *SBCellProduct = @"ProductCell";
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 1) {
-        // TODO Implement method
+        SBPurchaseRewardProductInput *input = [self inputFromProduct:self.purchasedProduct];
+        [self.webAPI purchaseRewardProductWithInput:input];
     }
+    
+    self.purchasedProduct = nil;
 }
 
 
@@ -132,6 +139,39 @@ static NSString *SBCellProduct = @"ProductCell";
 - (void)webAPI:(SBWebAPI *)webAPI didFailGettingRewardProductCatalogWithInput:(SBGetRewardProductCatalogInput *)input error:(NSError *)error
 {
     // TODO Implement method
+}
+
+- (void)webAPI:(SBWebAPI *)webAPI didPurchaseRewardProductWithOutput:(SBPurchaseRewardProductOutput *)output
+{
+    SBPointTransaction *transaction = output.transactions.lastObject;
+    
+    if (transaction) {
+        NSString *message = [self localizedString:@"The product is on its way to you. We charged your account %@ points for this purchase."];
+        [self showSimpleAlertWithTitle:[self localizedString:@"Order complete"]
+                               message:[NSString stringWithFormat:message, transaction.actualPoints]];
+    }
+    else {
+        // TODO Implement fail case
+    }
+}
+
+- (void)webAPI:(SBWebAPI *)webAPI didFailPurchasingRewardProductWithInput:(SBPurchaseRewardProductInput *)onput error:(NSError *)error
+{
+    // TODO Implement method
+}
+
+- (SBPurchaseRewardProductInput *)inputFromProduct:(SBRewardProduct *)product
+{
+    SBPurchaseItem *item = [[SBPurchaseItem alloc] init];
+    item.productID = product.productID;
+    item.quantity = @1;
+    item.quantityUnit = @"ST";
+    
+    SBPurchaseRewardProductInput *input = [[SBPurchaseRewardProductInput alloc] init];
+    input.membershipID = [[SBPersistenceAPI sharedInstance] readMembershipCredentials].membershipID;
+    input.items = @[item];
+    
+    return input;
 }
 
 @end

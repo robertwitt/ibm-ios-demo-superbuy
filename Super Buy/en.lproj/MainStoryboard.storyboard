@@ -95,6 +95,11 @@
                                 <segue destination="OA5-IN-C70" kind="modal" identifier="LoginSegue" id="irW-VW-Dyd"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="MCs-SF-olp">
+                            <connections>
+                                <action selector="onReload:" destination="QPC-6n-nIC" id="PDK-VZ-aAI"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gXI-Ko-G3g" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -644,57 +649,6 @@
             <point key="canvasLocation" x="3167" y="-509"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="SBBonusCodeViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SBBonusCodeViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="onCancel:"/>
-                <relationship kind="action" name="onScan:"/>
-                <relationship kind="action" name="onSend:"/>
-                <relationship kind="outlet" name="bonusCodeTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="sendButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="SBLoginViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SBLoginViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="onCancel:"/>
-                <relationship kind="action" name="onLogin:"/>
-                <relationship kind="outlet" name="memberIDTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="membershipIDTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="SBMemberViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SBMemberViewController.h"/>
-        </class>
-        <class className="SBMembershipViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SBMembershipViewController.h"/>
-        </class>
-        <class className="SBPointAccountViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SBPointAccountViewController.h"/>
-        </class>
-        <class className="SBProductCatalogViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SBProductCatalogViewController.h"/>
-        </class>
-        <class className="SBRegisterViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SBRegisterViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="onCancel:"/>
-                <relationship kind="action" name="onRegister:"/>
-                <relationship kind="outlet" name="cityTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="countryTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="firstNameTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="houseNumberTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="lastNameTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="postalCodeTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="streetTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

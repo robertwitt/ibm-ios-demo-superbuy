@@ -8,7 +8,7 @@
 
 #import "SBBonusCodeViewController.h"
 #import "SBWebAPI.h"
-#import "SBPersistenceCoordinator.h"
+#import "SBPersistenceAPI.h"
 
 
 const NSInteger SBBonusCodeLength = 6;
@@ -68,6 +68,7 @@ const NSInteger SBBonusCodeLength = 6;
 
 - (IBAction)onSend:(id)sender
 {
+    [self.bonusCodeTextField resignFirstResponder];
     [self.webAPI connectToBackend];
 }
 
@@ -100,7 +101,7 @@ const NSInteger SBBonusCodeLength = 6;
     numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
     input.bonusCode = [numberFormatter numberFromString:self.bonusCodeTextField.text];
     
-    SBMembershipCredentials *credentials = [[SBPersistenceCoordinator sharedInstance] readMembershipCredentials];
+    SBMembershipCredentials *credentials = [[SBPersistenceAPI sharedInstance] readMembershipCredentials];
     input.membershipID = credentials.membershipID;
     
     if (input.membershipID) {

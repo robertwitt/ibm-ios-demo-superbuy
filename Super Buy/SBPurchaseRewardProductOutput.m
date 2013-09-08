@@ -1,15 +1,15 @@
 //
-//  SBEnterBonusCodeOutput.m
+//  SBPurchaseRewardProductOutput.m
 //  Super Buy
 //
-//  Created by Robert Witt on 05.09.13.
+//  Created by Robert Witt on 08.09.13.
 //  Copyright (c) 2013 Robert Witt. All rights reserved.
 //
 
-#import "SBEnterBonusCodeOutput.h"
+#import "SBPurchaseRewardProductOutput.h"
 
 
-@implementation SBEnterBonusCodeOutput
+@implementation SBPurchaseRewardProductOutput
 
 - (id)initWithJsonData:(NSDictionary *)jsonData
 {

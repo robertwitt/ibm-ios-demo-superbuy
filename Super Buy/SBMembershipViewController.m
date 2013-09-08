@@ -11,7 +11,7 @@
 #import "SBMemberViewController.h"
 #import "SBPointAccountViewController.h"
 #import "SBWebAPI.h"
-#import "SBPersistenceCoordinator.h"
+#import "SBPersistenceAPI.h"
 
 
 const NSInteger SBSectionGeneral = 0;
@@ -43,6 +43,8 @@ static NSString *SBSeguePointAccount = @"PointAccountSegue";
 - (void)prepareForMemberSegue:(UIStoryboardSegue *)segue sender:(id)sender;
 - (void)prepareForPointAccountSegue:(UIStoryboardSegue *)segue sender:(id)sender;
 
+- (IBAction)onReload:(id)sender;
+
 @end
 
 
@@ -67,7 +69,7 @@ static NSString *SBSeguePointAccount = @"PointAccountSegue";
 - (SBMembershipCredentials *)credentials
 {
     if (!_credentials) {
-        _credentials = [[SBPersistenceCoordinator sharedInstance] readMembershipCredentials];
+        _credentials = [[SBPersistenceAPI sharedInstance] readMembershipCredentials];
     }
     return _credentials;
 }
@@ -76,7 +78,7 @@ static NSString *SBSeguePointAccount = @"PointAccountSegue";
 {
     if (![credentials isEqual:_credentials]) {
         _credentials = credentials;
-        [[SBPersistenceCoordinator sharedInstance] writeMembershipCredentials:credentials];
+        [[SBPersistenceAPI sharedInstance] writeMembershipCredentials:credentials];
         self.membership = nil;
     }
 }
@@ -134,6 +136,11 @@ static NSString *SBSeguePointAccount = @"PointAccountSegue";
     
     SBPointAccountViewController *controller = (SBPointAccountViewController *)segue.destinationViewController;
     controller.pointAccountID = pointAccount.ID;
+}
+
+- (IBAction)onReload:(id)sender
+{
+    [self.webAPI connectToBackend];
 }
 
 

@@ -1,5 +1,5 @@
 //
-//  SBPersistenceCoordinator.h
+//  SBPersistenceAPI.h
 //  Super Buy
 //
 //  Created by Robert Witt on 01.09.13.
@@ -9,11 +9,11 @@
 #import "SBMembershipCredentials.h"
 
 
-@interface SBPersistenceCoordinator : NSObject
+@interface SBPersistenceAPI : NSObject
 
 - (SBMembershipCredentials *)readMembershipCredentials;
 - (void)writeMembershipCredentials:(SBMembershipCredentials *)credentials;
 
-+ (SBPersistenceCoordinator *)sharedInstance;
++ (SBPersistenceAPI *)sharedInstance;
 
 @end

@@ -1,20 +1,20 @@
 //
-//  SBPersistenceCoordinator.m
+//  SBPersistenceAPI.m
 //  Super Buy
 //
 //  Created by Robert Witt on 01.09.13.
 //  Copyright (c) 2013 Robert Witt. All rights reserved.
 //
 
-#import "SBPersistenceCoordinator.h"
+#import "SBPersistenceAPI.h"
 
 
-static SBPersistenceCoordinator *Singleton;
+static SBPersistenceAPI *Singleton;
 static NSString *SBKeyMemberID = @"SBKeyMemberID";
 static NSString *SBKeyMembershipID = @"SBKeyMembershipID";
 
 
-@implementation SBPersistenceCoordinator
+@implementation SBPersistenceAPI
 
 - (SBMembershipCredentials *)readMembershipCredentials
 {
@@ -39,10 +39,10 @@ static NSString *SBKeyMembershipID = @"SBKeyMembershipID";
     [userDefaults synchronize];
 }
 
-+ (SBPersistenceCoordinator *)sharedInstance
++ (SBPersistenceAPI *)sharedInstance
 {
     if (!Singleton) {
-        Singleton = [[SBPersistenceCoordinator alloc] init];
+        Singleton = [[SBPersistenceAPI alloc] init];
     }
     return Singleton;
 }

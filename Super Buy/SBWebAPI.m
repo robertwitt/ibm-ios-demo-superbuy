@@ -20,6 +20,7 @@ static NSString *SBProcedureGetMember = @"getMember";
 static NSString *SBProcedureGetPointAccount = @"getPointAccount";
 static NSString *SBProcedureEnterBonusCode = @"enterBonusCode";
 static NSString *SBProcedureGetRewardProductCatalog = @"getRewardProductCatalog";
+static NSString *SBProcedurePurchaseRewardProduct = @"purchaseRewardProduct";
 
 
 @interface SBWebAPI () <WLDelegate>
@@ -90,6 +91,12 @@ BOOL connected = NO;
 - (void)getRewardProductCatalog:(SBGetRewardProductCatalogInput *)input
 {
     [self invokeProcedure:SBProcedureGetRewardProductCatalog withParameters:nil];
+}
+
+- (void)purchaseRewardProductWithInput:(SBPurchaseRewardProductInput *)input
+{
+    [self invokeProcedure:SBProcedurePurchaseRewardProduct
+           withParameters:@[input.jsonData]];
 }
 
 - (void)invokeProcedure:(NSString *)procedure withParameters:(NSArray *)parameters
@@ -163,6 +170,14 @@ BOOL connected = NO;
         if ([self.delegate respondsToSelector:@selector(webAPI:didGetRewardProductCatalogWithOutput:)]) {
             SBGetRewardProductCatalogOutput *output = [[SBGetRewardProductCatalogOutput alloc] initWithJsonData:jsonData];
             [self.delegate webAPI:self didGetRewardProductCatalogWithOutput:output];
+        }
+    }
+    
+    else if ([procedure isEqualToString:SBProcedurePurchaseRewardProduct])
+    {
+        if ([self.delegate respondsToSelector:@selector(webAPI:didPurchaseRewardProductWithOutput:)]) {
+            SBPurchaseRewardProductOutput *output = [[SBPurchaseRewardProductOutput alloc] initWithJsonData:jsonData];
+            [self.delegate webAPI:self didPurchaseRewardProductWithOutput:output];
         }
     }
     

@@ -19,7 +19,7 @@
 		E13834A517D3436500CA4457 /* SBRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E13834A417D3436500CA4457 /* SBRegisterViewController.m */; };
 		E13834A817D345D300CA4457 /* SBMembershipCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = E13834A717D345D300CA4457 /* SBMembershipCredentials.m */; };
 		E13834AB17D34AEB00CA4457 /* UIViewController+Addon.m in Sources */ = {isa = PBXBuildFile; fileRef = E13834AA17D34AEB00CA4457 /* UIViewController+Addon.m */; };
-		E13834AE17D35B7100CA4457 /* SBPersistenceCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = E13834AD17D35B7100CA4457 /* SBPersistenceCoordinator.m */; };
+		E13834AE17D35B7100CA4457 /* SBPersistenceAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = E13834AD17D35B7100CA4457 /* SBPersistenceAPI.m */; };
 		E13834B117D3613300CA4457 /* SBMember.m in Sources */ = {isa = PBXBuildFile; fileRef = E13834B017D3613300CA4457 /* SBMember.m */; };
 		E13834B417D3614400CA4457 /* SBMembAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = E13834B317D3614400CA4457 /* SBMembAddress.m */; };
 		E13834B717D3650600CA4457 /* SBGetMemberInput.m in Sources */ = {isa = PBXBuildFile; fileRef = E13834B617D3650600CA4457 /* SBGetMemberInput.m */; };
@@ -36,6 +36,7 @@
 		E1443F0E17D9201400134E03 /* SBMaSpecific.m in Sources */ = {isa = PBXBuildFile; fileRef = E1443F0D17D9201400134E03 /* SBMaSpecific.m */; };
 		E1443F1117D924A200134E03 /* SBEnterBonusCodeInput.m in Sources */ = {isa = PBXBuildFile; fileRef = E1443F1017D924A100134E03 /* SBEnterBonusCodeInput.m */; };
 		E1443F1417D924E100134E03 /* SBEnterBonusCodeOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = E1443F1317D924E100134E03 /* SBEnterBonusCodeOutput.m */; };
+		E14623DD17DC606E0014D396 /* SBPurchaseRewardProductOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = E14623DC17DC606E0014D396 /* SBPurchaseRewardProductOutput.m */; };
 		E16A4EBA17DA28A600AEBD92 /* SBProductCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = E16A4EB917DA28A600AEBD92 /* SBProductCatalog.m */; };
 		E16A4EBD17DA28C100AEBD92 /* SBRewardProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = E16A4EBC17DA28C100AEBD92 /* SBRewardProduct.m */; };
 		E16A4EC017DA2C8A00AEBD92 /* SBGetRewardProductCatalogInput.m in Sources */ = {isa = PBXBuildFile; fileRef = E16A4EBF17DA2C8A00AEBD92 /* SBGetRewardProductCatalogInput.m */; };
@@ -94,8 +95,8 @@
 		E13834A717D345D300CA4457 /* SBMembershipCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMembershipCredentials.m; sourceTree = "<group>"; };
 		E13834A917D34AEB00CA4457 /* UIViewController+Addon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Addon.h"; sourceTree = "<group>"; };
 		E13834AA17D34AEB00CA4457 /* UIViewController+Addon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Addon.m"; sourceTree = "<group>"; };
-		E13834AC17D35B7100CA4457 /* SBPersistenceCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPersistenceCoordinator.h; sourceTree = "<group>"; };
-		E13834AD17D35B7100CA4457 /* SBPersistenceCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPersistenceCoordinator.m; sourceTree = "<group>"; };
+		E13834AC17D35B7100CA4457 /* SBPersistenceAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPersistenceAPI.h; sourceTree = "<group>"; };
+		E13834AD17D35B7100CA4457 /* SBPersistenceAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPersistenceAPI.m; sourceTree = "<group>"; };
 		E13834AF17D3613300CA4457 /* SBMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMember.h; sourceTree = "<group>"; };
 		E13834B017D3613300CA4457 /* SBMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMember.m; sourceTree = "<group>"; };
 		E13834B217D3614300CA4457 /* SBMembAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBMembAddress.h; sourceTree = "<group>"; };
@@ -128,6 +129,8 @@
 		E1443F1017D924A100134E03 /* SBEnterBonusCodeInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBEnterBonusCodeInput.m; sourceTree = "<group>"; };
 		E1443F1217D924E100134E03 /* SBEnterBonusCodeOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBEnterBonusCodeOutput.h; sourceTree = "<group>"; };
 		E1443F1317D924E100134E03 /* SBEnterBonusCodeOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBEnterBonusCodeOutput.m; sourceTree = "<group>"; };
+		E14623DB17DC606E0014D396 /* SBPurchaseRewardProductOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBPurchaseRewardProductOutput.h; sourceTree = "<group>"; };
+		E14623DC17DC606E0014D396 /* SBPurchaseRewardProductOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBPurchaseRewardProductOutput.m; sourceTree = "<group>"; };
 		E16A4EB817DA28A600AEBD92 /* SBProductCatalog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBProductCatalog.h; sourceTree = "<group>"; };
 		E16A4EB917DA28A600AEBD92 /* SBProductCatalog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBProductCatalog.m; sourceTree = "<group>"; };
 		E16A4EBB17DA28C100AEBD92 /* SBRewardProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBRewardProduct.h; sourceTree = "<group>"; };
@@ -233,6 +236,8 @@
 				E16A4EC217DA2CBA00AEBD92 /* SBGetRewardProductCatalogOutput.m */,
 				E11EA66E17DB2E7300DED21B /* SBPurchaseRewardProductInput.h */,
 				E11EA66F17DB2E7300DED21B /* SBPurchaseRewardProductInput.m */,
+				E14623DB17DC606E0014D396 /* SBPurchaseRewardProductOutput.h */,
+				E14623DC17DC606E0014D396 /* SBPurchaseRewardProductOutput.m */,
 			);
 			name = "Web Layer";
 			sourceTree = "<group>";
@@ -366,8 +371,8 @@
 				E16A4EBB17DA28C100AEBD92 /* SBRewardProduct.h */,
 				E16A4EBC17DA28C100AEBD92 /* SBRewardProduct.m */,
 				E180C9CC17D249DE001C2742 /* SBMessageArray.m */,
-				E13834AC17D35B7100CA4457 /* SBPersistenceCoordinator.h */,
-				E13834AD17D35B7100CA4457 /* SBPersistenceCoordinator.m */,
+				E13834AC17D35B7100CA4457 /* SBPersistenceAPI.h */,
+				E13834AD17D35B7100CA4457 /* SBPersistenceAPI.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -458,7 +463,7 @@
 				E13834A517D3436500CA4457 /* SBRegisterViewController.m in Sources */,
 				E13834A817D345D300CA4457 /* SBMembershipCredentials.m in Sources */,
 				E13834AB17D34AEB00CA4457 /* UIViewController+Addon.m in Sources */,
-				E13834AE17D35B7100CA4457 /* SBPersistenceCoordinator.m in Sources */,
+				E13834AE17D35B7100CA4457 /* SBPersistenceAPI.m in Sources */,
 				E13834B117D3613300CA4457 /* SBMember.m in Sources */,
 				E13834B417D3614400CA4457 /* SBMembAddress.m in Sources */,
 				E13834B717D3650600CA4457 /* SBGetMemberInput.m in Sources */,
@@ -483,6 +488,7 @@
 				E11EA66417DB0F3700DED21B /* SBRegisterMembershipInput.m in Sources */,
 				E11EA66717DB0F5300DED21B /* SBRegisterMembershipOutput.m in Sources */,
 				E11EA67017DB2E7300DED21B /* SBPurchaseRewardProductInput.m in Sources */,
+				E14623DD17DC606E0014D396 /* SBPurchaseRewardProductOutput.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
