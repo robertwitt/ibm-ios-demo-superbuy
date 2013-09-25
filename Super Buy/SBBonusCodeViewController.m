@@ -14,12 +14,16 @@
 const NSInteger SBBonusCodeLength = 6;
 
 
-@interface SBBonusCodeViewController () <UITextFieldDelegate, SBWebAPIDelegate>
+@interface SBBonusCodeViewController () <UITextFieldDelegate, UIAlertViewDelegate, SBWebAPIDelegate>
 
 @property (strong, nonatomic) SBWebAPI *webAPI;
+@property (strong, nonatomic) UIAlertView *loadingAlert;
 
 @property (weak, nonatomic) IBOutlet UITextField *bonusCodeTextField;
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
+
+- (void)startEnteringBonusCode;
+- (void)stopEnteringBonusCode;
 
 - (IBAction)onScan:(id)sender;
 - (IBAction)onSend:(id)sender;
@@ -69,7 +73,7 @@ const NSInteger SBBonusCodeLength = 6;
 - (IBAction)onSend:(id)sender
 {
     [self.bonusCodeTextField resignFirstResponder];
-    [self.webAPI connectToBackend];
+    [self startEnteringBonusCode];
 }
 
 - (IBAction)onCancel:(id)sender
@@ -92,6 +96,18 @@ const NSInteger SBBonusCodeLength = 6;
 
 
 #pragma mark Web API delegate
+
+- (void)startEnteringBonusCode
+{
+    self.loadingAlert = [self loadingAlertWithTitle:[self localizedString:@"Processing ..."] delegate:self];
+    [self.webAPI connectToBackend];
+}
+
+- (void)stopEnteringBonusCode
+{
+    [self.loadingAlert dismissWithClickedButtonIndex:0 animated:YES];
+    self.loadingAlert = nil;
+}
 
 - (void)webAPIdidConnectToBackend:(SBWebAPI *)webAPI
 {
@@ -119,6 +135,8 @@ const NSInteger SBBonusCodeLength = 6;
 
 - (void)webAPI:(SBWebAPI *)webAPI didEnterBonusCodeWithOutput:(SBEnterBonusCodeOutput *)output
 {
+    [self stopEnteringBonusCode];
+    
     SBPointTransaction *transaction = output.transactions.lastObject;
     
     if (transaction) {

@@ -30,11 +30,12 @@ static NSString *SBSegueMember = @"MemberSegue";
 static NSString *SBSeguePointAccount = @"PointAccountSegue";
 
 
-@interface SBMembershipViewController () <SBLoginViewControllerDelegate, SBWebAPIDelegate>
+@interface SBMembershipViewController () <UIAlertViewDelegate, SBLoginViewControllerDelegate, SBWebAPIDelegate>
 
 @property (strong, nonatomic) SBWebAPI *webAPI;
 @property (strong, nonatomic) SBMembershipCredentials *credentials;
 @property (strong, nonatomic) SBMembership *membership;
+@property (strong, nonatomic) UIAlertView *loadingAlert;
 
 - (UITableViewCell *)generalCellForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (UITableViewCell *)tierCellForRowAtIndexPath:(NSIndexPath *)indexPath;
@@ -42,6 +43,8 @@ static NSString *SBSeguePointAccount = @"PointAccountSegue";
 - (void)prepareForLoginSegue:(UIStoryboardSegue *)segue sender:(id)sender;
 - (void)prepareForMemberSegue:(UIStoryboardSegue *)segue sender:(id)sender;
 - (void)prepareForPointAccountSegue:(UIStoryboardSegue *)segue sender:(id)sender;
+- (void)startGettingMembership;
+- (void)stopGettingMembership;
 
 - (IBAction)onReload:(id)sender;
 
@@ -91,7 +94,7 @@ static NSString *SBSeguePointAccount = @"PointAccountSegue";
     [super viewDidAppear:animated];
     
     if (self.credentials && !self.membership) {
-        [self.webAPI connectToBackend];
+        [self startGettingMembership];
     }
     else if (!self.credentials) {
         [self performSegueWithIdentifier:SBSegueLogin sender:self];
@@ -140,7 +143,7 @@ static NSString *SBSeguePointAccount = @"PointAccountSegue";
 
 - (IBAction)onReload:(id)sender
 {
-    [self.webAPI connectToBackend];
+    [self startGettingMembership];
 }
 
 
@@ -286,7 +289,7 @@ static NSString *SBSeguePointAccount = @"PointAccountSegue";
     self.credentials = credentials;
     
     [self dismissViewControllerAnimated:YES completion:^{
-        [self.webAPI connectToBackend];
+        [self startGettingMembership];
     }];
 }
 
@@ -300,6 +303,18 @@ static NSString *SBSeguePointAccount = @"PointAccountSegue";
 
 
 #pragma mark Web API Delegate
+
+- (void)startGettingMembership
+{
+    self.loadingAlert = [self loadingAlertWithTitle:[self localizedString:@"Loading ..."] delegate:self];
+    [self.webAPI connectToBackend];
+}
+
+- (void)stopGettingMembership
+{
+    [self.loadingAlert dismissWithClickedButtonIndex:0 animated:YES];
+    self.loadingAlert = nil;
+}
 
 - (void)webAPIdidConnectToBackend:(SBWebAPI *)webAPI
 {
@@ -315,6 +330,8 @@ static NSString *SBSeguePointAccount = @"PointAccountSegue";
 
 - (void)webAPI:(SBWebAPI *)webAPI didGetMembershipWithOutput:(SBGetMembershipOutput *)output
 {
+    [self stopGettingMembership];
+    
     if (output.membership) {
         self.membership = output.membership;
         [self.tableView reloadData];

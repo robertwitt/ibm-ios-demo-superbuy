@@ -10,9 +10,10 @@
 #import "SBWebAPI.h"
 
 
-@interface SBRegisterViewController () <UITextFieldDelegate, SBWebAPIDelegate>
+@interface SBRegisterViewController () <UITextFieldDelegate, UIAlertViewDelegate, SBWebAPIDelegate>
 
 @property (strong, nonatomic) SBWebAPI *webAPI;
+@property (strong, nonatomic) UIAlertView *loadingAlert;
 
 @property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *lastNameTextField;
@@ -23,7 +24,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *cityTextField;
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 
-- (void)registerMember;
+- (void)startRegistration;
+- (void)stopRegistration;
 
 - (IBAction)onRegister:(id)sender;
 - (IBAction)onCancel:(id)sender;
@@ -65,7 +67,7 @@
 
 - (IBAction)onRegister:(id)sender
 {
-    [self registerMember];
+    [self startRegistration];
 }
 
 - (IBAction)onCancel:(id)sender
@@ -73,9 +75,16 @@
     [self.delegate registerViewControllerDidCancelRegistration:self];
 }
 
-- (void)registerMember
+- (void)startRegistration
 {
+    self.loadingAlert = [self loadingAlertWithTitle:[self localizedString:@"Registering ..."] delegate:self];
     [self.webAPI connectToBackend];
+}
+
+- (void)stopRegistration
+{
+    [self.loadingAlert dismissWithClickedButtonIndex:0 animated:YES];
+    self.loadingAlert = nil;
 }
 
 
@@ -118,6 +127,8 @@
 
 - (void)webAPI:(SBWebAPI *)webAPI didRegisterMembershipWithOutput:(SBRegisterMembershipOutput *)output
 {
+    [self stopRegistration];
+    
     if (output.member && output.membership) {
         [self.delegate registerViewController:self didRegisterMember:output.member membership:output.membership];
     }

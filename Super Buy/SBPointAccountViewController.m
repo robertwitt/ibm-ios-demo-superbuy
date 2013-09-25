@@ -21,13 +21,16 @@ static NSString *SBCellDefault = @"DefaultCell";
 static NSString *SBCellTransaction = @"TransactionCell";
 
 
-@interface SBPointAccountViewController () <SBWebAPIDelegate>
+@interface SBPointAccountViewController () <UIAlertViewDelegate, SBWebAPIDelegate>
 
 @property (strong, nonatomic) SBWebAPI *webAPI;
 @property (strong, nonatomic) SBPointAccount *pointAccount;
+@property (strong, nonatomic) UIAlertView *loadingAlert;
 
 - (UITableViewCell *)generalCellForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (UITableViewCell *)transactionCellForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (void)startGettingPointAccount;
+- (void)stopGettingPointAccount;
 
 @end
 
@@ -64,7 +67,7 @@ static NSString *SBCellTransaction = @"TransactionCell";
     [super viewDidAppear:animated];
     
     if (!self.pointAccount) {
-        [self.webAPI connectToBackend];
+        [self startGettingPointAccount];
     }
 }
 
@@ -187,6 +190,18 @@ static NSString *SBCellTransaction = @"TransactionCell";
 
 #pragma mark Web API Delegate
 
+- (void)startGettingPointAccount
+{
+    self.loadingAlert = [self loadingAlertWithTitle:[self localizedString:@"Loading ..."] delegate:self];
+    [self.webAPI connectToBackend];
+}
+
+- (void)stopGettingPointAccount
+{
+    [self.loadingAlert dismissWithClickedButtonIndex:0 animated:YES];
+    self.loadingAlert = nil;
+}
+
 - (void)webAPIdidConnectToBackend:(SBWebAPI *)webAPI
 {
     SBGetPointAccountInput *input = [[SBGetPointAccountInput alloc] init];
@@ -201,6 +216,8 @@ static NSString *SBCellTransaction = @"TransactionCell";
 
 - (void)webAPI:(SBWebAPI *)webAPI didGetPointAccountWithOutput:(SBGetPointAccountOutput *)output
 {
+    [self stopGettingPointAccount];
+    
     if (output.pointAccount) {
         self.pointAccount = output.pointAccount;
         [self.tableView reloadData];

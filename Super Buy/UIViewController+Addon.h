@@ -10,5 +10,6 @@
 
 - (NSString *)localizedString:(NSString *)key;
 - (void)showSimpleAlertWithTitle:(NSString *)title message:(NSString *)message;
+- (UIAlertView *)loadingAlertWithTitle:(NSString *)title delegate:(id<UIAlertViewDelegate>)delegate;
 
 @end

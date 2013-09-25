@@ -19,8 +19,13 @@ static NSString *SBCellProduct = @"ProductCell";
 @property (strong, nonatomic) SBWebAPI *webAPI;
 @property (strong, nonatomic) SBProductCatalog *productCatalog;
 @property (strong, nonatomic) SBRewardProduct *purchasedProduct;
+@property (strong, nonatomic) UIAlertView *loadingAlert;
 
 - (SBPurchaseRewardProductInput *)inputFromProduct:(SBRewardProduct *)product;
+- (void)startGettingRewardProductCatalog;
+- (void)stopGettingRewardProductCatalog;
+- (void)startRewardPurchase;
+- (void)stopRewardPurchase;
 
 @end
 
@@ -49,7 +54,7 @@ static NSString *SBCellProduct = @"ProductCell";
     [super viewDidAppear:animated];
     
     if (!self.productCatalog) {
-        [self.webAPI connectToBackend];
+        [self startGettingRewardProductCatalog];
     }
 }
 
@@ -110,8 +115,7 @@ static NSString *SBCellProduct = @"ProductCell";
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 1) {
-        SBPurchaseRewardProductInput *input = [self inputFromProduct:self.purchasedProduct];
-        [self.webAPI purchaseRewardProductWithInput:input];
+        [self startRewardPurchase];
     }
     
     self.purchasedProduct = nil;
@@ -119,6 +123,31 @@ static NSString *SBCellProduct = @"ProductCell";
 
 
 #pragma mark Web API delegate
+
+- (void)startGettingRewardProductCatalog
+{
+    self.loadingAlert = [self loadingAlertWithTitle:[self localizedString:@"Loading ..."] delegate:self];
+    [self.webAPI connectToBackend];
+}
+
+- (void)stopGettingRewardProductCatalog
+{
+    [self.loadingAlert dismissWithClickedButtonIndex:0 animated:YES];
+    self.loadingAlert = nil;
+}
+
+- (void)startRewardPurchase
+{
+    self.loadingAlert = [self loadingAlertWithTitle:[self localizedString:@"Processing ..."] delegate:self];
+    SBPurchaseRewardProductInput *input = [self inputFromProduct:self.purchasedProduct];
+    [self.webAPI purchaseRewardProductWithInput:input];
+}
+
+- (void)stopRewardPurchase
+{
+    [self.loadingAlert dismissWithClickedButtonIndex:0 animated:YES];
+    self.loadingAlert = nil;
+}
 
 - (void)webAPIdidConnectToBackend:(SBWebAPI *)webAPI
 {
@@ -132,6 +161,7 @@ static NSString *SBCellProduct = @"ProductCell";
 
 - (void)webAPI:(SBWebAPI *)webAPI didGetRewardProductCatalogWithOutput:(SBGetRewardProductCatalogOutput *)output
 {
+    [self stopGettingRewardProductCatalog];
     self.productCatalog = output.productCatalog;
     [self.tableView reloadData];
 }
@@ -143,6 +173,8 @@ static NSString *SBCellProduct = @"ProductCell";
 
 - (void)webAPI:(SBWebAPI *)webAPI didPurchaseRewardProductWithOutput:(SBPurchaseRewardProductOutput *)output
 {
+    [self stopRewardPurchase];
+    
     SBPointTransaction *transaction = output.transactions.lastObject;
     
     if (transaction) {

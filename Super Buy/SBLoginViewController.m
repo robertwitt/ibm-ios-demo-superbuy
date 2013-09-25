@@ -14,15 +14,17 @@
 static NSString *SBSegueRegister = @"RegisterSegue";
 
 
-@interface SBLoginViewController () <SBRegisterViewControllerDelegate, SBWebAPIDelegate>
+@interface SBLoginViewController () <UIAlertViewDelegate, SBRegisterViewControllerDelegate, SBWebAPIDelegate>
 
 @property (strong, nonatomic) SBWebAPI *webAPI;
+@property (strong, nonatomic) UIAlertView *loadingAlert;
 
 @property (weak, nonatomic) IBOutlet UITextField *membershipIDTextField;
 @property (weak, nonatomic) IBOutlet UITextField *memberIDTextField;
 
 - (void)prepareForRegisterSegue:(UIStoryboardSegue *)segue sender:(id)sender;
-- (void)login;
+- (void)startLogin;
+- (void)stopLogin;
 
 - (IBAction)onLogin:(id)sender;
 - (IBAction)onCancel:(id)sender;
@@ -57,7 +59,7 @@ static NSString *SBSegueRegister = @"RegisterSegue";
 
 - (IBAction)onLogin:(id)sender
 {
-    [self login];
+    [self startLogin];
 }
 
 - (IBAction)onCancel:(id)sender
@@ -65,9 +67,16 @@ static NSString *SBSegueRegister = @"RegisterSegue";
     [self.delegate loginViewControllerdidCancelLogin:self];
 }
 
-- (void)login
+- (void)startLogin
 {
+    self.loadingAlert = [self loadingAlertWithTitle:[self localizedString:@"Logging in ..."] delegate:self];
     [self.webAPI connectToBackend];
+}
+
+- (void)stopLogin
+{
+    [self.loadingAlert dismissWithClickedButtonIndex:0 animated:YES];
+    self.loadingAlert = nil;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -117,6 +126,8 @@ static NSString *SBSegueRegister = @"RegisterSegue";
 
 - (void)webAPI:(SBWebAPI *)webAPI didValidateMembershipWithOutput:(SBValidateMembershipOutput *)output
 {
+    [self stopLogin];
+    
     if (output.membershipValid) {
         SBMembershipCredentials *credentials = [[SBMembershipCredentials alloc] init];
         credentials.memberID = self.memberIDTextField.text;

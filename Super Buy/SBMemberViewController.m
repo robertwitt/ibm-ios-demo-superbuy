@@ -25,10 +25,14 @@ const NSInteger SBRowEmailAddress = 6;
 static NSString *SBCellMember = @"MemberCell";
 
 
-@interface SBMemberViewController () <SBWebAPIDelegate>
+@interface SBMemberViewController () <UIAlertViewDelegate, SBWebAPIDelegate>
 
 @property (strong, nonatomic) SBWebAPI *webAPI;
 @property (strong, nonatomic) SBMember *member;
+@property (strong, nonatomic) UIAlertView *loadingAlert;
+
+- (void)startGettingMember;
+- (void)stopGettingMember;
 
 @end
 
@@ -65,7 +69,7 @@ static NSString *SBCellMember = @"MemberCell";
     [super viewDidAppear:animated];
     
     if (!self.member) {
-        [self.webAPI connectToBackend];
+        [self startGettingMember];
     }
 }
 
@@ -173,6 +177,18 @@ static NSString *SBCellMember = @"MemberCell";
 
 #pragma mark Web API Delegate
 
+- (void)startGettingMember
+{
+    self.loadingAlert = [self loadingAlertWithTitle:[self localizedString:@"Loading ..."] delegate:self];
+    [self.webAPI connectToBackend];
+}
+
+- (void)stopGettingMember
+{
+    [self.loadingAlert dismissWithClickedButtonIndex:0 animated:YES];
+    self.loadingAlert = nil;
+}
+
 - (void)webAPIdidConnectToBackend:(SBWebAPI *)webAPI
 {
     SBGetMemberInput *input = [[SBGetMemberInput alloc] init];
@@ -187,6 +203,8 @@ static NSString *SBCellMember = @"MemberCell";
 
 - (void)webAPI:(SBWebAPI *)webAPI didGetMemberWithOutput:(SBGetMemberOutput *)output
 {
+    [self stopGettingMember];
+    
     if (output.member) {
         self.member = output.member;
         [self.tableView reloadData];
