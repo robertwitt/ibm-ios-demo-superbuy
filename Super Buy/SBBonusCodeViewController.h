@@ -6,6 +6,6 @@
 //  Copyright (c) 2013 Robert Witt. All rights reserved.
 //
 
-@interface SBBonusCodeViewController : UIViewController
+@interface SBBonusCodeViewController : SBWebAPIViewController
 
 @end

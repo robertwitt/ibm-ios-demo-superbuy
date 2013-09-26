@@ -6,6 +6,6 @@
 //  Copyright (c) 2013 Robert Witt. All rights reserved.
 //
 
-@interface SBMembershipViewController : UITableViewController
+@interface SBMembershipViewController : SBWebAPITableViewController
 
 @end

@@ -7,12 +7,10 @@
 //
 
 #import "SBRegisterViewController.h"
-#import "SBWebAPI.h"
 
 
-@interface SBRegisterViewController () <UITextFieldDelegate, UIAlertViewDelegate, SBWebAPIDelegate>
+@interface SBRegisterViewController () <UITextFieldDelegate, UIAlertViewDelegate>
 
-@property (strong, nonatomic) SBWebAPI *webAPI;
 @property (strong, nonatomic) UIAlertView *loadingAlert;
 
 @property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
@@ -38,18 +36,6 @@
 @implementation SBRegisterViewController
 
 
-#pragma mark Properties
-
-- (SBWebAPI *)webAPI
-{
-    if (!_webAPI) {
-        _webAPI = [[SBWebAPI alloc] init];
-        _webAPI.delegate = self;
-    }
-    return _webAPI;
-}
-
-
 #pragma mark Managing the View
 
 - (void)viewDidAppear:(BOOL)animated
@@ -62,7 +48,15 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
+    self.firstNameTextField = nil;
+    self.lastNameTextField = nil;
+    self.streetTextField = nil;
+    self.houseNumberTextField = nil;
+    self.countryTextField = nil;
+    self.postalCodeTextField = nil;
+    self.cityTextField = nil;
+    self.emailTextField = nil;
 }
 
 - (IBAction)onRegister:(id)sender
@@ -105,7 +99,7 @@
 
 #pragma mark Web API Delegate
 
-- (void)webAPIdidConnectToBackend:(SBWebAPI *)webAPI
+- (void)backendConnectionEstablished
 {
     SBRegisterMembershipInput *input = [[SBRegisterMembershipInput alloc] init];
     input.firstName = self.firstNameTextField.text;
@@ -120,11 +114,6 @@
     [self.webAPI registerMembershipWithInput:input];
 }
 
-- (void)webAPI:(SBWebAPI *)webAPI didFailConnectingToBackendWithError:(NSError *)error
-{
-    // TODO Implement method
-}
-
 - (void)webAPI:(SBWebAPI *)webAPI didRegisterMembershipWithOutput:(SBRegisterMembershipOutput *)output
 {
     [self stopRegistration];
@@ -133,7 +122,8 @@
         [self.delegate registerViewController:self didRegisterMember:output.member membership:output.membership];
     }
     else {
-        // TODO Implement fail case
+        [self showSimpleAlertWithTitle:[self localizedString:@"Registration invalid"]
+                               message:output.messages.firstImportantMessage.text];
     }
 }
 

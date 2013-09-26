@@ -26,6 +26,7 @@ static NSString *SBProcedurePurchaseRewardProduct = @"purchaseRewardProduct";
 @interface SBWebAPI () <WLDelegate>
 
 @property (strong, nonatomic) NSString *procedure;
+@property (nonatomic) id input;
 
 - (void)invokeProcedure:(NSString *)procedure withParameters:(NSArray *)parameters;
 
@@ -54,47 +55,55 @@ BOOL connected = NO;
 
 - (void)validateMembershipWithInput:(SBValidateMembershipInput *)input
 {
+    self.input = input;
     [self invokeProcedure:SBProcedureValidateMembership
            withParameters:@[input.memberID, input.membershipID]];
 }
 
 - (void)registerMembershipWithInput:(SBRegisterMembershipInput *)input
 {
+    self.input = input;
     [self invokeProcedure:SBProcedureRegisterMembership
            withParameters:@[input.jsonData]];
 }
 
 - (void)getMembershipWithInput:(SBGetMembershipInput *)input
 {
+    self.input = input;
     [self invokeProcedure:SBProcedureGetMembership
            withParameters:@[input.membershipID]];
 }
 
 - (void)getMemberWithInput:(SBGetMemberInput *)input
 {
+    self.input = input;
     [self invokeProcedure:SBProcedureGetMember
            withParameters:@[input.memberID]];
 }
 
 - (void)getPointAccountWithInput:(SBGetPointAccountInput *)input
 {
+    self.input = input;
     [self invokeProcedure:SBProcedureGetPointAccount
            withParameters:@[input.pointAccountID]];
 }
 
 - (void)enterBonusCodeWithInput:(SBEnterBonusCodeInput *)input
 {
+    self.input = input;
     [self invokeProcedure:SBProcedureEnterBonusCode
            withParameters:@[input.bonusCode, input.membershipID]];
 }
 
 - (void)getRewardProductCatalog:(SBGetRewardProductCatalogInput *)input
 {
+    self.input = input;
     [self invokeProcedure:SBProcedureGetRewardProductCatalog withParameters:nil];
 }
 
 - (void)purchaseRewardProductWithInput:(SBPurchaseRewardProductInput *)input
 {
+    self.input = input;
     [self invokeProcedure:SBProcedurePurchaseRewardProduct
            withParameters:@[input.jsonData]];
 }
@@ -114,6 +123,8 @@ BOOL connected = NO;
 - (void)onSuccess:(WLResponse *)response
 {
     NSDictionary *jsonData = [response getResponseJson];
+    NSLog(@"%@", jsonData);
+    
     NSString *procedure = self.procedure;
     self.procedure = nil;
     
@@ -194,7 +205,77 @@ BOOL connected = NO;
 
 - (void)onFailure:(WLFailResponse *)response
 {
-    // TODO Implement method
+    NSLog(@"%@", response.errorMsg);
+    
+    NSString *procedure = self.procedure;
+    self.procedure = nil;
+    
+    id input = self.input;
+    self.input = nil;
+    
+    if ([procedure isEqualToString:SBProcedureValidateMembership])
+    {
+        if ([self.delegate respondsToSelector:@selector(webAPI:didFailValidatingMembershipWithInput:error:)]) {
+            [self.delegate webAPI:self didFailValidatingMembershipWithInput:(SBValidateMembershipInput *)input error:nil];
+        }
+    }
+    
+    else if ([procedure isEqualToString:SBProcedureRegisterMembership])
+    {
+        if ([self.delegate respondsToSelector:@selector(webAPI:didFailRegisteringMembershipWithInput:error:)]) {
+            [self.delegate webAPI:self didFailRegisteringMembershipWithInput:(SBRegisterMembershipInput *)input error:nil];
+        }
+    }
+    
+    else if ([procedure isEqualToString:SBProcedureGetMembership])
+    {
+        if ([self.delegate respondsToSelector:@selector(webAPI:didFailGettingMembershipWithInput:error:)]) {
+            [self.delegate webAPI:self didFailGettingMembershipWithInput:(SBGetMembershipInput *)input error:nil];
+        }
+    }
+    
+    else if ([procedure isEqualToString:SBProcedureGetMember])
+    {
+        if ([self.delegate respondsToSelector:@selector(webAPI:didFailGettingMemberWithInput:error:)]) {
+            [self.delegate webAPI:self didFailGettingMemberWithInput:(SBGetMemberInput *)input error:nil];
+        }
+    }
+    
+    else if ([procedure isEqualToString:SBProcedureGetPointAccount])
+    {
+        if ([self.delegate respondsToSelector:@selector(webAPI:didFailGettingPointAccountWithInput:error:)]) {
+            [self.delegate webAPI:self didFailGettingPointAccountWithInput:(SBGetPointAccountInput *)input error:nil];
+        }
+    }
+    
+    else if ([procedure isEqualToString:SBProcedureEnterBonusCode])
+    {
+        if ([self.delegate respondsToSelector:@selector(webAPI:didFailEnteringBonusCodeWithInput:error:)]) {
+            [self.delegate webAPI:self didFailEnteringBonusCodeWithInput:(SBEnterBonusCodeInput *)input error:nil];
+        }
+    }
+    
+    else if ([procedure isEqualToString:SBProcedureGetRewardProductCatalog])
+    {
+        if ([self.delegate respondsToSelector:@selector(webAPI:didFailGettingRewardProductCatalogWithInput:error:)]) {
+            [self.delegate webAPI:self didFailGettingRewardProductCatalogWithInput:(SBGetRewardProductCatalogInput *)input error:nil];
+        }
+    }
+    
+    else if ([procedure isEqualToString:SBProcedurePurchaseRewardProduct])
+    {
+        if ([self.delegate respondsToSelector:@selector(webAPI:didFailPurchasingRewardProductWithInput:error:)]) {
+            [self.delegate webAPI:self didFailPurchasingRewardProductWithInput:(SBPurchaseRewardProductInput *)input error:nil];
+        }
+    }
+    
+    else
+    {
+        // Finally this must be the connect attempt.
+        if ([self.delegate respondsToSelector:@selector(webAPI:didFailConnectingToBackendWithError:)]) {
+            [self.delegate webAPI:self didFailConnectingToBackendWithError:nil];
+        }
+    }
 }
 
 @end

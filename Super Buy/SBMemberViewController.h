@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Robert Witt. All rights reserved.
 //
 
-@interface SBMemberViewController : UITableViewController
+@interface SBMemberViewController : SBWebAPITableViewController
 
 @property (strong, nonatomic) NSString *memberID;
 

@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Robert Witt. All rights reserved.
 //
 
-@interface SBPointAccountViewController : UITableViewController
+@interface SBPointAccountViewController : SBWebAPITableViewController
 
 @property (strong, nonatomic) NSString *pointAccountID;
 

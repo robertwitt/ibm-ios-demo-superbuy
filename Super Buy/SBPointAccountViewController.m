@@ -7,7 +7,6 @@
 //
 
 #import "SBPointAccountViewController.h"
-#import "SBWebAPI.h"
 
 
 const NSInteger SBSectionPAGeneral = 0;
@@ -21,9 +20,8 @@ static NSString *SBCellDefault = @"DefaultCell";
 static NSString *SBCellTransaction = @"TransactionCell";
 
 
-@interface SBPointAccountViewController () <UIAlertViewDelegate, SBWebAPIDelegate>
+@interface SBPointAccountViewController () <UIAlertViewDelegate>
 
-@property (strong, nonatomic) SBWebAPI *webAPI;
 @property (strong, nonatomic) SBPointAccount *pointAccount;
 @property (strong, nonatomic) UIAlertView *loadingAlert;
 
@@ -50,15 +48,6 @@ static NSString *SBCellTransaction = @"TransactionCell";
     }
 }
 
-- (SBWebAPI *)webAPI
-{
-    if (!_webAPI) {
-        _webAPI = [[SBWebAPI alloc] init];
-        _webAPI.delegate = self;
-    }
-    return _webAPI;
-}
-
 
 #pragma mark Managing the View
 
@@ -69,12 +58,6 @@ static NSString *SBCellTransaction = @"TransactionCell";
     if (!self.pointAccount) {
         [self startGettingPointAccount];
     }
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 
@@ -202,16 +185,11 @@ static NSString *SBCellTransaction = @"TransactionCell";
     self.loadingAlert = nil;
 }
 
-- (void)webAPIdidConnectToBackend:(SBWebAPI *)webAPI
+- (void)backendConnectionEstablished
 {
     SBGetPointAccountInput *input = [[SBGetPointAccountInput alloc] init];
     input.pointAccountID = self.pointAccountID;
     [self.webAPI getPointAccountWithInput:input];
-}
-
-- (void)webAPI:(SBWebAPI *)webAPI didFailConnectingToBackendWithError:(NSError *)error
-{
-    // TODO Implement method
 }
 
 - (void)webAPI:(SBWebAPI *)webAPI didGetPointAccountWithOutput:(SBGetPointAccountOutput *)output
@@ -223,7 +201,8 @@ static NSString *SBCellTransaction = @"TransactionCell";
         [self.tableView reloadData];
     }
     else {
-        // TODO Implement fail
+        [self showSimpleAlertWithTitle:[self localizedString:@"Error"]
+                               message:output.messages.firstImportantMessage.text];
     }
 }
 

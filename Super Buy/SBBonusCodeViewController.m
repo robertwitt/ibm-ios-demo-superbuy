@@ -7,16 +7,14 @@
 //
 
 #import "SBBonusCodeViewController.h"
-#import "SBWebAPI.h"
 #import "SBPersistenceAPI.h"
 
 
 const NSInteger SBBonusCodeLength = 6;
 
 
-@interface SBBonusCodeViewController () <UITextFieldDelegate, UIAlertViewDelegate, SBWebAPIDelegate>
+@interface SBBonusCodeViewController () <UITextFieldDelegate, UIAlertViewDelegate>
 
-@property (strong, nonatomic) SBWebAPI *webAPI;
 @property (strong, nonatomic) UIAlertView *loadingAlert;
 
 @property (weak, nonatomic) IBOutlet UITextField *bonusCodeTextField;
@@ -37,18 +35,6 @@ const NSInteger SBBonusCodeLength = 6;
 @implementation SBBonusCodeViewController
 
 
-#pragma mark Properties
-
-- (SBWebAPI *)webAPI
-{
-    if (!_webAPI) {
-        _webAPI = [[SBWebAPI alloc] init];
-        _webAPI.delegate = self;
-    }
-    return _webAPI;
-}
-
-
 #pragma mark Managing the View
 
 - (void)viewWillAppear:(BOOL)animated
@@ -61,7 +47,9 @@ const NSInteger SBBonusCodeLength = 6;
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
+    self.bonusCodeTextField = nil;
+    self.sendButton = nil;
 }
 
 - (IBAction)onScan:(id)sender
@@ -109,7 +97,7 @@ const NSInteger SBBonusCodeLength = 6;
     self.loadingAlert = nil;
 }
 
-- (void)webAPIdidConnectToBackend:(SBWebAPI *)webAPI
+- (void)backendConnectionEstablished
 {
     SBEnterBonusCodeInput *input = [[SBEnterBonusCodeInput alloc] init];
     
@@ -128,11 +116,6 @@ const NSInteger SBBonusCodeLength = 6;
     }
 }
 
-- (void)webAPI:(SBWebAPI *)webAPI didFailConnectingToBackendWithError:(NSError *)error
-{
-    // TODO Implement method
-}
-
 - (void)webAPI:(SBWebAPI *)webAPI didEnterBonusCodeWithOutput:(SBEnterBonusCodeOutput *)output
 {
     [self stopEnteringBonusCode];
@@ -145,7 +128,8 @@ const NSInteger SBBonusCodeLength = 6;
                                message:[NSString stringWithFormat:message, transaction.actualPoints]];
     }
     else {
-        // TODO Implement fail case
+        [self showSimpleAlertWithTitle:[self localizedString:@"Error"]
+                               message:output.messages.firstImportantMessage.text];
     }
 }
 

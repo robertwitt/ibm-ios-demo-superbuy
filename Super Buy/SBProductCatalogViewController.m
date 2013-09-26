@@ -8,15 +8,13 @@
 
 #import "SBProductCatalogViewController.h"
 #import "SBPersistenceAPI.h"
-#import "SBWebAPI.h"
 
 
 static NSString *SBCellProduct = @"ProductCell";
 
 
-@interface SBProductCatalogViewController () <UIAlertViewDelegate, SBWebAPIDelegate>
+@interface SBProductCatalogViewController () <UIAlertViewDelegate>
 
-@property (strong, nonatomic) SBWebAPI *webAPI;
 @property (strong, nonatomic) SBProductCatalog *productCatalog;
 @property (strong, nonatomic) SBRewardProduct *purchasedProduct;
 @property (strong, nonatomic) UIAlertView *loadingAlert;
@@ -35,18 +33,6 @@ static NSString *SBCellProduct = @"ProductCell";
 @implementation SBProductCatalogViewController
 
 
-#pragma mark Properties
-
-- (SBWebAPI *)webAPI
-{
-    if (!_webAPI) {
-        _webAPI = [[SBWebAPI alloc] init];
-        _webAPI.delegate = self;
-    }
-    return _webAPI;
-}
-
-
 #pragma mark Managing the View
 
 - (void)viewDidAppear:(BOOL)animated
@@ -56,12 +42,6 @@ static NSString *SBCellProduct = @"ProductCell";
     if (!self.productCatalog) {
         [self startGettingRewardProductCatalog];
     }
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 
@@ -149,14 +129,9 @@ static NSString *SBCellProduct = @"ProductCell";
     self.loadingAlert = nil;
 }
 
-- (void)webAPIdidConnectToBackend:(SBWebAPI *)webAPI
+- (void)backendConnectionEstablished
 {
     [self.webAPI getRewardProductCatalog:nil];
-}
-
-- (void)webAPI:(SBWebAPI *)webAPI didFailConnectingToBackendWithError:(NSError *)error
-{
-    // TODO Implement method
 }
 
 - (void)webAPI:(SBWebAPI *)webAPI didGetRewardProductCatalogWithOutput:(SBGetRewardProductCatalogOutput *)output
@@ -183,11 +158,12 @@ static NSString *SBCellProduct = @"ProductCell";
                                message:[NSString stringWithFormat:message, transaction.actualPoints]];
     }
     else {
-        // TODO Implement fail case
+        [self showSimpleAlertWithTitle:[self localizedString:@"Error"]
+                               message:output.messages.firstImportantMessage.text];
     }
 }
 
-- (void)webAPI:(SBWebAPI *)webAPI didFailPurchasingRewardProductWithInput:(SBPurchaseRewardProductInput *)onput error:(NSError *)error
+- (void)webAPI:(SBWebAPI *)webAPI didFailPurchasingRewardProductWithInput:(SBPurchaseRewardProductInput *)input error:(NSError *)error
 {
     // TODO Implement method
 }

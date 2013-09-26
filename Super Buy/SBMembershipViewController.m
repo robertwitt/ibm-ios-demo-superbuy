@@ -10,7 +10,6 @@
 #import "SBLoginViewController.h"
 #import "SBMemberViewController.h"
 #import "SBPointAccountViewController.h"
-#import "SBWebAPI.h"
 #import "SBPersistenceAPI.h"
 
 
@@ -30,9 +29,8 @@ static NSString *SBSegueMember = @"MemberSegue";
 static NSString *SBSeguePointAccount = @"PointAccountSegue";
 
 
-@interface SBMembershipViewController () <UIAlertViewDelegate, SBLoginViewControllerDelegate, SBWebAPIDelegate>
+@interface SBMembershipViewController () <UIAlertViewDelegate, SBLoginViewControllerDelegate>
 
-@property (strong, nonatomic) SBWebAPI *webAPI;
 @property (strong, nonatomic) SBMembershipCredentials *credentials;
 @property (strong, nonatomic) SBMembership *membership;
 @property (strong, nonatomic) UIAlertView *loadingAlert;
@@ -59,15 +57,6 @@ static NSString *SBSeguePointAccount = @"PointAccountSegue";
 
 
 #pragma mark Properties
-
-- (SBWebAPI *)webAPI
-{
-    if (!_webAPI) {
-        _webAPI = [[SBWebAPI alloc] init];
-        _webAPI.delegate = self;
-    }
-    return _webAPI;
-}
 
 - (SBMembershipCredentials *)credentials
 {
@@ -104,7 +93,8 @@ static NSString *SBSeguePointAccount = @"PointAccountSegue";
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
+    _credentials = nil;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -316,16 +306,11 @@ static NSString *SBSeguePointAccount = @"PointAccountSegue";
     self.loadingAlert = nil;
 }
 
-- (void)webAPIdidConnectToBackend:(SBWebAPI *)webAPI
+- (void)backendConnectionEstablished
 {
     SBGetMembershipInput *input = [[SBGetMembershipInput alloc] init];
     input.membershipID = self.credentials.membershipID;
     [self.webAPI getMembershipWithInput:input];
-}
-
-- (void)webAPI:(SBWebAPI *)webAPI didFailConnectingToBackendWithError:(NSError *)error
-{
-    // TODO Implement method
 }
 
 - (void)webAPI:(SBWebAPI *)webAPI didGetMembershipWithOutput:(SBGetMembershipOutput *)output
@@ -337,7 +322,8 @@ static NSString *SBSeguePointAccount = @"PointAccountSegue";
         [self.tableView reloadData];
     }
     else {
-        // TODO Implement fail
+        [self showSimpleAlertWithTitle:[self localizedString:@"Error"]
+                               message:output.messages.firstImportantMessage.text];
     }
 }
 

@@ -13,7 +13,7 @@
 
 @protocol SBLoginViewControllerDelegate;
 
-@interface SBLoginViewController : UIViewController
+@interface SBLoginViewController : SBWebAPIViewController
 
 @property (nonatomic) id<SBLoginViewControllerDelegate> delegate;
 

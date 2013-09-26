@@ -8,15 +8,13 @@
 
 #import "SBLoginViewController.h"
 #import "SBRegisterViewController.h"
-#import "SBWebAPI.h"
 
 
 static NSString *SBSegueRegister = @"RegisterSegue";
 
 
-@interface SBLoginViewController () <UIAlertViewDelegate, SBRegisterViewControllerDelegate, SBWebAPIDelegate>
+@interface SBLoginViewController () <UIAlertViewDelegate, SBRegisterViewControllerDelegate>
 
-@property (strong, nonatomic) SBWebAPI *webAPI;
 @property (strong, nonatomic) UIAlertView *loadingAlert;
 
 @property (weak, nonatomic) IBOutlet UITextField *membershipIDTextField;
@@ -37,24 +35,14 @@ static NSString *SBSegueRegister = @"RegisterSegue";
 @implementation SBLoginViewController
 
 
-#pragma mark Properties
-
-- (SBWebAPI *)webAPI
-{
-    if (!_webAPI) {
-        _webAPI = [[SBWebAPI alloc] init];
-        _webAPI.delegate = self;
-    }
-    return _webAPI;
-}
-
-
 #pragma mark Managing the View
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
+    self.membershipIDTextField = nil;
+    self.memberIDTextField = nil;
 }
 
 - (IBAction)onLogin:(id)sender
@@ -110,18 +98,13 @@ static NSString *SBSegueRegister = @"RegisterSegue";
 
 #pragma mark Web API Delegate
 
-- (void)webAPIdidConnectToBackend:(SBWebAPI *)webAPI
+- (void)backendConnectionEstablished
 {
     SBValidateMembershipInput *input = [[SBValidateMembershipInput alloc] init];
     input.memberID = self.memberIDTextField.text;
     input.membershipID = self.membershipIDTextField.text;
     
     [self.webAPI validateMembershipWithInput:input];
-}
-
-- (void)webAPI:(SBWebAPI *)webAPI didFailConnectingToBackendWithError:(NSError *)error
-{
-    // TODO Implement method
 }
 
 - (void)webAPI:(SBWebAPI *)webAPI didValidateMembershipWithOutput:(SBValidateMembershipOutput *)output
@@ -134,8 +117,10 @@ static NSString *SBSegueRegister = @"RegisterSegue";
         credentials.membershipID = self.membershipIDTextField.text;
         [self.delegate loginViewController:self didLoginWithCredentials:credentials];
     }
+    
     else {
-        // TODO Implement fail
+        [self showSimpleAlertWithTitle:[self localizedString:@"Membership invalid"]
+                               message:output.messages.firstImportantMessage.text];
     }
 }
 

@@ -12,7 +12,7 @@
 
 @protocol SBRegisterViewControllerDelegate;
 
-@interface SBRegisterViewController : UIViewController
+@interface SBRegisterViewController : SBWebAPIViewController
 
 @property (nonatomic) id<SBRegisterViewControllerDelegate> delegate;
 
