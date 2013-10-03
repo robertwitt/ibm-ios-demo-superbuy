@@ -13,6 +13,7 @@
 @interface SBProductCatalog : SBModelObject
 
 @property (strong, nonatomic, readonly) NSArray *products;
+@property (nonatomic, readonly) NSInteger size;
 
 - (NSInteger)numberOfCategories;
 - (NSString *)categoryAtIndex:(NSInteger)index;

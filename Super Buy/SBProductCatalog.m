@@ -29,16 +29,19 @@
     
     // Parse reward products
     NSMutableArray *products = [NSMutableArray array];
-    id prodData = [jsonData objectForKey:@"item"];
     
-    if ([prodData isKindOfClass:[NSArray class]]) {
-        for (NSDictionary *prodDate in prodData) {
-            SBRewardProduct *product = [[SBRewardProduct alloc] initWithJsonData:prodDate header:self];
+    if (jsonData && ![jsonData isKindOfClass:[NSString class]]) {
+    
+        id prodData = [jsonData objectForKey:@"item"];
+        if ([prodData isKindOfClass:[NSArray class]]) {
+            for (NSDictionary *prodDate in prodData) {
+                SBRewardProduct *product = [[SBRewardProduct alloc] initWithJsonData:prodDate header:self];
+                [products addObject:product];
+            }
+        } else {
+            SBRewardProduct *product = [[SBRewardProduct alloc] initWithJsonData:prodData header:self];
             [products addObject:product];
         }
-    } else {
-        SBRewardProduct *product = [[SBRewardProduct alloc] initWithJsonData:prodData header:self];
-        [products addObject:product];
     }
     _products = products;
     
@@ -69,6 +72,11 @@
     
     _categories = categories;
     _productDict = products;
+}
+
+- (NSInteger)size
+{
+    return self.products.count;
 }
 
 - (NSInteger)numberOfCategories

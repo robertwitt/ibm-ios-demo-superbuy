@@ -134,11 +134,23 @@ static NSString *SBCellProduct = @"ProductCell";
     [self.webAPI getRewardProductCatalog:nil];
 }
 
+- (void)backendConnectionFailedWithError:(NSError *)error
+{
+    [super backendConnectionFailedWithError:error];
+    [self.loadingAlert dismissWithClickedButtonIndex:0 animated:YES];
+    self.loadingAlert = nil;
+}
+
 - (void)webAPI:(SBWebAPI *)webAPI didGetRewardProductCatalogWithOutput:(SBGetRewardProductCatalogOutput *)output
 {
     [self stopGettingRewardProductCatalog];
     self.productCatalog = output.productCatalog;
     [self.tableView reloadData];
+    
+    if (self.productCatalog.size == 0) {
+        [self showSimpleAlertWithTitle:[self localizedString:@"Sorry"]
+                               message:[output.messages.allInfoMessages.lastObject text]];
+    }
 }
 
 - (void)webAPI:(SBWebAPI *)webAPI didFailGettingRewardProductCatalogWithInput:(SBGetRewardProductCatalogInput *)input error:(NSError *)error
