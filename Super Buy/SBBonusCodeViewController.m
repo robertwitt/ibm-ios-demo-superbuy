@@ -126,6 +126,7 @@ const NSInteger SBBonusCodeLength = 6;
         NSString *message = [self localizedString:@"We credited to your account %@ points."];
         [self showSimpleAlertWithTitle:[self localizedString:@"Thank you"]
                                message:[NSString stringWithFormat:message, transaction.actualPoints]];
+        self.bonusCodeTextField.text = @"";
     }
     else {
         [self showSimpleAlertWithTitle:[self localizedString:@"Error"]

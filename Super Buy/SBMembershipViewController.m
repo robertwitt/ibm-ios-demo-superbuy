@@ -277,10 +277,9 @@ static NSString *SBSeguePointAccount = @"PointAccountSegue";
 - (void)loginViewController:(SBLoginViewController *)controller didLoginWithCredentials:(SBMembershipCredentials *)credentials
 {
     self.credentials = credentials;
+    [self dismissViewControllerAnimated:YES completion:NULL];
     
-    [self dismissViewControllerAnimated:YES completion:^{
-        [self startGettingMembership];
-    }];
+    // Membership load is triggered in viewDidAppear:
 }
 
 - (void)loginViewController:(SBLoginViewController *)controller didLoginWithRegisteredMembership:(SBMembership *)membership
