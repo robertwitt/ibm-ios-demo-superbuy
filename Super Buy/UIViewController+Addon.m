@@ -29,16 +29,18 @@
 - (UIAlertView *)loadingAlertWithTitle:(NSString *)title delegate:(id<UIAlertViewDelegate>)delegate
 {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
-                                                        message:@"\n\n"
+                                                        message:@""
                                                        delegate:delegate
                                               cancelButtonTitle:[self localizedString:@"Cancel"]
                                               otherButtonTitles:nil];
     
-    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    spinner.frame = CGRectMake(125, 50, 36, 36);
-    [spinner startAnimating];
-    
-    [alertView addSubview:spinner];
+    // iOS 7: addSubview: on an UIAlertView seems to be deprecated. Removed the spinner from loading alert.
+//    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+//    spinner.frame = CGRectMake(125, 50, 36, 36);
+//    [spinner startAnimating];
+//    
+//    [alertView addSubview:spinner];
+
     [alertView show];
     
     return alertView;
