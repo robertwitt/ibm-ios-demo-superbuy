@@ -145,6 +145,8 @@ static NSString *SBSegueCart = @"CartSegue";
         cell.accessoryType = UITableViewCellAccessoryNone;
         [self.cart removeProduct:product];
     }
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 // End of v1.1
 

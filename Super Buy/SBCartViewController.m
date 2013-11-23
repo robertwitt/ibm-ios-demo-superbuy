@@ -14,6 +14,9 @@
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *pointsItem;
 
+- (void)updatePointsItem;
+- (void)onCartDidChangeNotification:(NSNotification *)notification;
+
 @end
 
 
@@ -29,7 +32,25 @@
     [super viewDidLoad];
     
     self.navigationController.toolbarHidden = NO;
-    //[self.tableView beginUpdates];
+    self.tableView.editing = YES;
+    [self updatePointsItem];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(onCartDidChangeNotification:)
+                                                 name:SBCartDidChangeNotification
+                                               object:self.cart];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 
@@ -51,9 +72,21 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CartItemCell"];
     cell.textLabel.text = product.productDescription;
-    cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@", product.points];
+    cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%.2f", product.points.floatValue];
     
     return cell;
+}
+
+
+#pragma mark Table View Delegate
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        SBRewardProduct *product = [self.cart.products objectAtIndex:indexPath.row];
+        [self.cart removeProduct:product];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
 }
 
 
@@ -66,12 +99,25 @@
 
 - (IBAction)onClear:(id)sender
 {
+    [self.cart clear];
     
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
+                  withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 - (IBAction)onOrder:(id)sender
 {
     
+}
+
+- (void)updatePointsItem
+{
+    self.pointsItem.title = [[NSString alloc] initWithFormat:@"%.2f points", self.cart.sumOfPoints];
+}
+
+- (void)onCartDidChangeNotification:(NSNotification *)notification
+{
+    [self updatePointsItem];
 }
 
 @end

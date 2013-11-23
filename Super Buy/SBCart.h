@@ -9,6 +9,9 @@
 #import "SBRewardProduct.h"
 
 
+static NSString *SBCartDidChangeNotification = @"SBCartDidChangeNotification";
+
+
 @interface SBCart : NSObject
 
 @property (strong, nonatomic, readonly) NSArray *products;

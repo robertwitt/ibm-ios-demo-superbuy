@@ -13,6 +13,8 @@
 
 @property (strong, nonatomic) NSMutableArray *cartProducts;
 
+- (void)notifyObservers;
+
 @end
 
 
@@ -25,7 +27,12 @@
 
 - (float)sumOfPoints
 {
-    return [[self.products valueForKeyPath:@"sum.points"] floatValue];
+    __block float sum;
+    [self.products enumerateObjectsUsingBlock:^(SBRewardProduct *product, NSUInteger idx, BOOL *stop) {
+        sum = sum + product.points.floatValue;
+    }];
+    
+    return sum;
 }
 
 - (NSMutableArray *)cartProducts
@@ -39,16 +46,25 @@
 - (void)addProduct:(SBRewardProduct *)product
 {
     [self.cartProducts addObject:product];
+    [self notifyObservers];
 }
 
 - (void)removeProduct:(SBRewardProduct *)product
 {
     [self.cartProducts removeObject:product];
+    [self notifyObservers];
 }
 
 - (void)clear
 {
     [self.cartProducts removeAllObjects];
+    [self notifyObservers];
+}
+
+- (void)notifyObservers
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:SBCartDidChangeNotification
+                                                        object:self];
 }
 
 @end
