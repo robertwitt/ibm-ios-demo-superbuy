@@ -71,6 +71,8 @@
 		E18F0C9417F403E200D03478 /* SBMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = E18F0C9317F403E200D03478 /* SBMessage.m */; };
 		E18F0C9717F435F600D03478 /* SBWebAPIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E18F0C9617F435F600D03478 /* SBWebAPIViewController.m */; };
 		E18F0C9A17F4382A00D03478 /* SBWebAPITableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E18F0C9917F4382A00D03478 /* SBWebAPITableViewController.m */; };
+		E1CBAB0E1840C8600052BF4A /* SBCart.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CBAB0D1840C8600052BF4A /* SBCart.m */; };
+		E1CBAB111840CBC90052BF4A /* SBCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CBAB101840CBC90052BF4A /* SBCartViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -186,6 +188,10 @@
 		E18F0C9617F435F600D03478 /* SBWebAPIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBWebAPIViewController.m; sourceTree = "<group>"; };
 		E18F0C9817F4382A00D03478 /* SBWebAPITableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBWebAPITableViewController.h; sourceTree = "<group>"; };
 		E18F0C9917F4382A00D03478 /* SBWebAPITableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBWebAPITableViewController.m; sourceTree = "<group>"; };
+		E1CBAB0C1840C8600052BF4A /* SBCart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBCart.h; sourceTree = "<group>"; };
+		E1CBAB0D1840C8600052BF4A /* SBCart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBCart.m; sourceTree = "<group>"; };
+		E1CBAB0F1840CBC90052BF4A /* SBCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBCartViewController.h; sourceTree = "<group>"; };
+		E1CBAB101840CBC90052BF4A /* SBCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBCartViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -338,6 +344,8 @@
 				E1443F0417D91C4400134E03 /* SBBonusCodeViewController.m */,
 				E16A4EC417DA34C100AEBD92 /* SBProductCatalogViewController.h */,
 				E16A4EC517DA34C100AEBD92 /* SBProductCatalogViewController.m */,
+				E1CBAB0F1840CBC90052BF4A /* SBCartViewController.h */,
+				E1CBAB101840CBC90052BF4A /* SBCartViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -382,6 +390,8 @@
 				E16A4EB917DA28A600AEBD92 /* SBProductCatalog.m */,
 				E16A4EBB17DA28C100AEBD92 /* SBRewardProduct.h */,
 				E16A4EBC17DA28C100AEBD92 /* SBRewardProduct.m */,
+				E1CBAB0C1840C8600052BF4A /* SBCart.h */,
+				E1CBAB0D1840C8600052BF4A /* SBCart.m */,
 				E180C9CB17D249DE001C2742 /* SBMessageArray.h */,
 				E180C9CC17D249DE001C2742 /* SBMessageArray.m */,
 				E18F0C9217F403E200D03478 /* SBMessage.h */,
@@ -478,10 +488,12 @@
 				E13834A517D3436500CA4457 /* SBRegisterViewController.m in Sources */,
 				E13834A817D345D300CA4457 /* SBMembershipCredentials.m in Sources */,
 				E13834AB17D34AEB00CA4457 /* UIViewController+Addon.m in Sources */,
+				E1CBAB0E1840C8600052BF4A /* SBCart.m in Sources */,
 				E13834AE17D35B7100CA4457 /* SBPersistenceAPI.m in Sources */,
 				E13834B117D3613300CA4457 /* SBMember.m in Sources */,
 				E13834B417D3614400CA4457 /* SBMembAddress.m in Sources */,
 				E13834B717D3650600CA4457 /* SBGetMemberInput.m in Sources */,
+				E1CBAB111840CBC90052BF4A /* SBCartViewController.m in Sources */,
 				E13834BA17D3655A00CA4457 /* SBGetMemberOutput.m in Sources */,
 				E13834BD17D3675D00CA4457 /* SBMemberViewController.m in Sources */,
 				E1443EF617D9012600134E03 /* SBPointAccount.m in Sources */,

@@ -7,17 +7,22 @@
 //
 
 #import "SBProductCatalogViewController.h"
+#import "SBCartViewController.h"
 #import "SBPersistenceAPI.h"
 
 
 static NSString *SBCellProduct = @"ProductCell";
+static NSString *SBSegueCart = @"CartSegue";
 
 
-@interface SBProductCatalogViewController () <UIAlertViewDelegate>
+@interface SBProductCatalogViewController () <UIAlertViewDelegate, SBCartViewControllerDelegate>
 
 @property (strong, nonatomic) SBProductCatalog *productCatalog;
 @property (strong, nonatomic) SBRewardProduct *purchasedProduct;
 @property (strong, nonatomic) UIAlertView *loadingAlert;
+//Begin of v1.1
+@property (strong, nonatomic) SBCart *cart;
+// End of v1.1
 
 - (SBPurchaseRewardProductInput *)inputFromProduct:(SBRewardProduct *)product;
 - (void)startGettingRewardProductCatalog;
@@ -33,6 +38,19 @@ static NSString *SBCellProduct = @"ProductCell";
 @implementation SBProductCatalogViewController
 
 
+// Begin of v1.1
+#pragma mark Properties
+
+- (SBCart *)cart
+{
+    if (!_cart) {
+        _cart = [[SBCart alloc] init];
+    }
+    return _cart;
+}
+// End of v1.1
+
+
 #pragma mark Managing the View
 
 - (void)viewDidAppear:(BOOL)animated
@@ -43,6 +61,17 @@ static NSString *SBCellProduct = @"ProductCell";
         [self startGettingRewardProductCatalog];
     }
 }
+
+// Begin of v1.1
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:SBSegueCart]) {
+        SBCartViewController *controller = (SBCartViewController *)[segue.destinationViewController topViewController];
+        controller.cart = self.cart;
+        controller.delegate = self;
+    }
+}
+// End of v1.1
 
 
 #pragma mark Table view data source
@@ -76,6 +105,7 @@ static NSString *SBCellProduct = @"ProductCell";
 
 #pragma mark Table view delegate
 
+/* Begin of v1.1
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
     self.purchasedProduct = [self.productCatalog productAtIndexPath:indexPath];
@@ -88,7 +118,7 @@ static NSString *SBCellProduct = @"ProductCell";
                                               otherButtonTitles:[self localizedString:@"Order"], nil];
     [alertView show];
 }
-
+ 
 
 #pragma mark Alert view delegate
 
@@ -100,6 +130,23 @@ static NSString *SBCellProduct = @"ProductCell";
     
     self.purchasedProduct = nil;
 }
+*/
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SBRewardProduct *product = [self.productCatalog productAtIndexPath:indexPath];
+    
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    if (cell.accessoryType == UITableViewCellAccessoryNone) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        [self.cart addProduct:product];
+    }
+    else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        [self.cart removeProduct:product];
+    }
+}
+// End of v1.1
 
 
 #pragma mark Web API delegate
