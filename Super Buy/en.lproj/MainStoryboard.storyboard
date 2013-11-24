@@ -713,6 +713,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
+                        <outlet property="orderButton" destination="Uen-za-Z2a" id="Tsu-0k-Olh"/>
                         <outlet property="pointsItem" destination="mXt-8p-1nn" id="1dk-Pj-UAs"/>
                     </connections>
                 </tableViewController>

@@ -145,7 +145,7 @@ static NSString *SBCellTransaction = @"TransactionCell";
     SBPointTransaction *transaction = [self.pointAccount.transactions objectAtIndex:indexPath.row];
     
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:SBCellTransaction forIndexPath:indexPath];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ | %@ | %@", transaction.transactionTypeText, transaction.transactionReasonText, transaction.actualPoints];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ | %@ | %@", transaction.transactionTypeText, transaction.transactionReasonText, transaction.points];
     cell.detailTextLabel.text = [NSDateFormatter localizedStringFromDate:transaction.postingDate
                                                                dateStyle:NSDateFormatterFullStyle
                                                                timeStyle:NSDateFormatterMediumStyle];

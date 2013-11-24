@@ -12,23 +12,28 @@
 
 
 static NSString *SBCellProduct = @"ProductCell";
+// Begin of v1.1
 static NSString *SBSegueCart = @"CartSegue";
+// End of v1.1
 
 
 @interface SBProductCatalogViewController () <UIAlertViewDelegate, SBCartViewControllerDelegate>
 
 @property (strong, nonatomic) SBProductCatalog *productCatalog;
-@property (strong, nonatomic) SBRewardProduct *purchasedProduct;
 @property (strong, nonatomic) UIAlertView *loadingAlert;
-//Begin of v1.1
+// Begin of v1.1
+//@property (strong, nonatomic) SBRewardProduct *purchasedProduct;
 @property (strong, nonatomic) SBCart *cart;
 // End of v1.1
 
-- (SBPurchaseRewardProductInput *)inputFromProduct:(SBRewardProduct *)product;
 - (void)startGettingRewardProductCatalog;
 - (void)stopGettingRewardProductCatalog;
-- (void)startRewardPurchase;
-- (void)stopRewardPurchase;
+// Begin of v1.1
+//- (SBPurchaseRewardProductInput *)inputFromProduct:(SBRewardProduct *)product;
+//- (void)startRewardPurchase;
+//- (void)stopRewardPurchase;
+- (void)clearCart;
+// End of v1.1
 
 @end
 
@@ -93,6 +98,14 @@ static NSString *SBSegueCart = @"CartSegue";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SBCellProduct forIndexPath:indexPath];
     cell.textLabel.text = product.productDescription;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", product.points];
+    
+    // Begin of v1.1
+    if ([self.cart.products containsObject:product]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    // End of v1.1
     
     return cell;
 }
@@ -165,6 +178,7 @@ static NSString *SBSegueCart = @"CartSegue";
     self.loadingAlert = nil;
 }
 
+/* Begin of v1.1
 - (void)startRewardPurchase
 {
     self.loadingAlert = [self loadingAlertWithTitle:[self localizedString:@"Processing ..."] delegate:self];
@@ -177,6 +191,7 @@ static NSString *SBSegueCart = @"CartSegue";
     [self.loadingAlert dismissWithClickedButtonIndex:0 animated:YES];
     self.loadingAlert = nil;
 }
+ */
 
 - (void)backendConnectionEstablished
 {
@@ -207,6 +222,7 @@ static NSString *SBSegueCart = @"CartSegue";
     // TODO Implement method
 }
 
+/* Begin of v1.1
 - (void)webAPI:(SBWebAPI *)webAPI didPurchaseRewardProductWithOutput:(SBPurchaseRewardProductOutput *)output
 {
     [self stopRewardPurchase];
@@ -242,5 +258,33 @@ static NSString *SBSegueCart = @"CartSegue";
     
     return input;
 }
+ */
+
+
+// Begin of v1.1
+#pragma mark Cart View Controller Delegate
+
+- (void)cartViewControllerDidCancel:(SBCartViewController *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)cartViewController:(SBCartViewController *)controller didClearCart:(SBCart *)cart
+{
+    [self clearCart];
+}
+
+- (void)cartViewController:(SBCartViewController *)controller didOrderCart:(SBCart *)cart
+{
+    [self clearCart];
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)clearCart
+{
+    self.cart = nil;
+    [self.tableView reloadData];
+}
+// End of v1.1
 
 @end

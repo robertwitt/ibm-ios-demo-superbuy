@@ -8,14 +8,20 @@
 //
 
 #import "SBCartViewController.h"
+#import "SBPersistenceAPI.h"
 
 
-@interface SBCartViewController ()
+@interface SBCartViewController () <UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *pointsItem;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *orderButton;
+@property (strong, nonatomic) UIAlertView *loadingAlert;
 
 - (void)updatePointsItem;
 - (void)onCartDidChangeNotification:(NSNotification *)notification;
+- (SBPurchaseRewardProductInput *)inputFromProducts:(NSArray *)products;
+- (void)startRewardPurchase;
+- (void)stopRewardPurchase;
 
 @end
 
@@ -94,7 +100,9 @@
 
 - (IBAction)onCancel:(id)sender
 {
-    
+    if ([self.delegate respondsToSelector:@selector(cartViewControllerDidCancel:)]) {
+        [self.delegate cartViewControllerDidCancel:self];
+    }
 }
 
 - (IBAction)onClear:(id)sender
@@ -103,11 +111,15 @@
     
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
                   withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    if ([self.delegate respondsToSelector:@selector(cartViewController:didClearCart:)]) {
+        [self.delegate cartViewController:self didClearCart:self.cart];
+    }
 }
 
 - (IBAction)onOrder:(id)sender
 {
-    
+    [self startRewardPurchase];
 }
 
 - (void)updatePointsItem
@@ -118,6 +130,71 @@
 - (void)onCartDidChangeNotification:(NSNotification *)notification
 {
     [self updatePointsItem];
+    self.orderButton.enabled = (self.cart.products.count > 0);
+}
+
+
+#pragma mark Web API Delegate
+
+- (SBPurchaseRewardProductInput *)inputFromProducts:(NSArray *)products
+{
+    NSMutableArray *items = [[NSMutableArray alloc] init];
+    
+    [products enumerateObjectsUsingBlock:^(SBRewardProduct *product, NSUInteger idx, BOOL *stop) {
+        SBPurchaseItem *item = [[SBPurchaseItem alloc] init];
+        item.productID = product.productID;
+        item.quantity = @1;
+        item.quantityUnit = @"ST";
+        [items addObject:item];
+    }];
+    
+    SBPurchaseRewardProductInput *input = [[SBPurchaseRewardProductInput alloc] init];
+    input.membershipID = [[SBPersistenceAPI sharedInstance] readMembershipCredentials].membershipID;
+    input.items = items;
+    
+    return input;
+}
+
+- (void)startRewardPurchase
+{
+    self.loadingAlert = [self loadingAlertWithTitle:[self localizedString:@"Processing ..."] delegate:self];
+    SBPurchaseRewardProductInput *input = [self inputFromProducts:self.cart.products];
+    [self.webAPI purchaseRewardProductWithInput:input];
+}
+
+- (void)stopRewardPurchase
+{
+    [self.loadingAlert dismissWithClickedButtonIndex:0 animated:YES];
+    self.loadingAlert = nil;
+}
+
+- (void)webAPI:(SBWebAPI *)webAPI didPurchaseRewardProductWithOutput:(SBPurchaseRewardProductOutput *)output
+{
+    [self stopRewardPurchase];
+    
+    __block float totalPoints;
+    [output.transactions enumerateObjectsUsingBlock:^(SBPointTransaction *transaction, NSUInteger idx, BOOL *stop) {
+        totalPoints += transaction.actualPoints.floatValue;
+    }];
+    
+    if (output.transactions.count > 0) {
+        NSString *message = [self localizedString:@"The delivery is on its way to you. We charged your account %.2f points for this purchase."];
+        [self showSimpleAlertWithTitle:[self localizedString:@"Order complete"]
+                               message:[NSString stringWithFormat:message, totalPoints]];
+        
+        if ([self.delegate respondsToSelector:@selector(cartViewController:didOrderCart:)]) {
+            [self.delegate cartViewController:self didOrderCart:self.cart];
+        }
+    }
+    else {
+        [self showSimpleAlertWithTitle:[self localizedString:@"Error"]
+                               message:output.messages.firstImportantMessage.text];
+    }
+}
+
+- (void)webAPI:(SBWebAPI *)webAPI didFailPurchasingRewardProductWithInput:(SBPurchaseRewardProductInput *)input error:(NSError *)error
+{
+    // TODO Implement method
 }
 
 @end
