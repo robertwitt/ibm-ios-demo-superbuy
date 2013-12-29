@@ -73,6 +73,8 @@
 		E18F0C9A17F4382A00D03478 /* SBWebAPITableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E18F0C9917F4382A00D03478 /* SBWebAPITableViewController.m */; };
 		E1CBAB0E1840C8600052BF4A /* SBCart.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CBAB0D1840C8600052BF4A /* SBCart.m */; };
 		E1CBAB111840CBC90052BF4A /* SBCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CBAB101840CBC90052BF4A /* SBCartViewController.m */; };
+		E1CC2CAF187056A200610777 /* appicon_iphone_1x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1CC2CAD187056A200610777 /* appicon_iphone_1x.png */; };
+		E1CC2CB0187056A200610777 /* appicon_iphone_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1CC2CAE187056A200610777 /* appicon_iphone_2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -192,6 +194,8 @@
 		E1CBAB0D1840C8600052BF4A /* SBCart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBCart.m; sourceTree = "<group>"; };
 		E1CBAB0F1840CBC90052BF4A /* SBCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBCartViewController.h; sourceTree = "<group>"; };
 		E1CBAB101840CBC90052BF4A /* SBCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBCartViewController.m; sourceTree = "<group>"; };
+		E1CC2CAD187056A200610777 /* appicon_iphone_1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon_iphone_1x.png; sourceTree = "<group>"; };
+		E1CC2CAE187056A200610777 /* appicon_iphone_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon_iphone_2x.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -314,6 +318,8 @@
 				E180C95117D210F1001C2742 /* Default.png */,
 				E180C95317D210F1001C2742 /* Default@2x.png */,
 				E180C95517D210F1001C2742 /* Default-568h@2x.png */,
+				E1CC2CAD187056A200610777 /* appicon_iphone_1x.png */,
+				E1CC2CAE187056A200610777 /* appicon_iphone_2x.png */,
 				E180C99517D21550001C2742 /* worklight.plist */,
 			);
 			name = "Supporting Files";
@@ -458,6 +464,8 @@
 				E180C95217D210F1001C2742 /* Default.png in Resources */,
 				E180C95417D210F1001C2742 /* Default@2x.png in Resources */,
 				E180C95617D210F1001C2742 /* Default-568h@2x.png in Resources */,
+				E1CC2CAF187056A200610777 /* appicon_iphone_1x.png in Resources */,
+				E1CC2CB0187056A200610777 /* appicon_iphone_2x.png in Resources */,
 				E180C95917D210F1001C2742 /* MainStoryboard.storyboard in Resources */,
 				E180C99617D21550001C2742 /* worklight.plist in Resources */,
 			);
